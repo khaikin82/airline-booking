@@ -77,8 +77,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<Flight> findAppropriateFlight(FindFlightRequest findFlightRequest) {
         return flightRepository.findByRequest(
-                findFlightRequest.getDepartureAirportName(),
-                findFlightRequest.getArrivalAirportName(),
+                findFlightRequest.getDepartureAirportId(),
+                findFlightRequest.getArrivalAirportId(),
                 findFlightRequest.getDepartureDate(),
                 findFlightRequest.getPassengerNumber());
     }

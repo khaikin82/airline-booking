@@ -6,8 +6,8 @@ import java.time.LocalDate;
 
 @Data
 public class FindFlightRequest {
-    private String departureAirportName;
-    private String arrivalAirportName;
+    private Integer departureAirportId;
+    private Integer arrivalAirportId;
     private LocalDate departureDate;
     private Integer passengerNumber;
 }

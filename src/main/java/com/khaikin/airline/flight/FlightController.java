@@ -43,7 +43,7 @@ public class FlightController {
         return updatedFlight;
     }
 
-    @GetMapping("/find")
+    @PostMapping("/find")
     public List<Flight> findAppropriateFlight(@RequestBody FindFlightRequest findFlightRequest) {
         return flightService.findAppropriateFlight(findFlightRequest);
     }
