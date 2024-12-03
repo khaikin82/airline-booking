@@ -1,9 +1,10 @@
 package com.khaikin.airline.test;
 
+import com.khaikin.airline.airplane.Airplane;
+import com.khaikin.airline.airplane.AirplaneService;
 import com.khaikin.airline.airport.Airport;
 import com.khaikin.airline.airport.AirportService;
 import com.khaikin.airline.flight.Flight;
-import com.khaikin.airline.flight.FlightRepository;
 import com.khaikin.airline.flight.FlightService;
 import com.khaikin.airline.seat.Seat;
 import com.khaikin.airline.seat.SeatType;
@@ -20,7 +21,7 @@ import java.util.List;
 public class DataSeeder implements CommandLineRunner {
     private final AirportService airportService;
     private final FlightService flightService;
-    private final FlightRepository flightRepository;
+    private final AirplaneService airplaneService;
 
     @Override
     public void run(String... args)
@@ -98,6 +99,42 @@ public class DataSeeder implements CommandLineRunner {
         flightService.updateDepartureAirport(flight1, airport1);
         flightService.updateArrivalAirport(flight1, airport3);
 
+        // airplane
+        Airplane airplane1 = new Airplane();
+        airplane1.setCode("A001");
+        airplane1.setModel("Boeing 737");
+        airplane1.setManufacturer("Boeing");
+        airplane1.setCapacity(180);
+
+        Airplane airplane2 = new Airplane();
+        airplane2.setCode("A002");
+        airplane2.setModel("Airbus A320");
+        airplane2.setManufacturer("Airbus");
+        airplane2.setCapacity(160);
+
+        Airplane airplane3 = new Airplane();
+        airplane3.setCode("A003");
+        airplane3.setModel("Boeing 787 Dreamliner");
+        airplane3.setManufacturer("Boeing");
+        airplane3.setCapacity(242);
+
+        Airplane airplane4 = new Airplane();
+        airplane4.setCode("A004");
+        airplane4.setModel("Airbus A350");
+        airplane4.setManufacturer("Airbus");
+        airplane4.setCapacity(300);
+
+        Airplane airplane5 = new Airplane();
+        airplane5.setCode("A005");
+        airplane5.setModel("Boeing 777");
+        airplane5.setManufacturer("Boeing");
+        airplane5.setCapacity(396);
+
+        airplaneService.createAirplane(airplane1);
+        airplaneService.createAirplane(airplane2);
+        airplaneService.createAirplane(airplane3);
+        airplaneService.createAirplane(airplane4);
+        airplaneService.createAirplane(airplane5);
 //        List<Flight> foundFlight = flightRepository.findByRequest(
 //                LocalDate.of(2024, 1, 10),
 //                LocalDate.of(2024, 1, 12));
