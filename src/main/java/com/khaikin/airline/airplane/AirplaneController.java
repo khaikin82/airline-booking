@@ -19,6 +19,19 @@ public class AirplaneController {
         return ResponseEntity.ok(airplanes);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Airplane> getAirplane(@PathVariable Integer id) {
+        Optional<Airplane> airplane = airplaneService.getAirplane(id);
+        return airplane.map(ResponseEntity::ok).orElseThrow(() -> new RuntimeException("Airplane not found " +
+                                                                                               "with id " + id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAirplane(@PathVariable Integer id) {
+        airplaneService.deleteAirplane(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     public Airplane createAirplane(@RequestBody Airplane airplane) {
         return airplaneService.createAirplane(airplane);

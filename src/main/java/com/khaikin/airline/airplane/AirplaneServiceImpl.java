@@ -22,6 +22,16 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
 
     @Override
+    public Optional<Airplane> getAirplane(Integer id) {
+        return airplaneRepository.findById(id);
+    }
+
+    @Override
+    public void deleteAirplane(Integer id) {
+        airplaneRepository.deleteById(id);
+    }
+
+    @Override
     public Optional<Airplane> updateAirplane(Integer id, Airplane updateAirplane) {
         return airplaneRepository.findById(id).map(airplane -> {
             airplane.setCode(updateAirplane.getCode());
