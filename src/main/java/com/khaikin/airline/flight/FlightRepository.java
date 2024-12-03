@@ -12,19 +12,12 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
             "WHERE f.departureAirport.name = :departureAirportName " +
             "AND f.arrivalAirport.name = :arrivalAirportName " +
             "AND DATE(f.departureTime) = :departureDate " +
-            "AND DATE(f.arrivalTime) = :arrivalDate")
+            "AND 0 < :passengerNumber"
+    )
     List<Flight> findByRequest(@Param("departureAirportName") String departureAirportName,
                                @Param("arrivalAirportName") String arrivalAirportName,
                                @Param("departureDate") LocalDate departureDate,
-                               @Param("arrivalDate") LocalDate arrivalDate
+                               @Param("passengerNumber") Integer passengerNumber
     );
-
-    @Query(" SELECT f FROM Flight f " +
-            "WHERE f.departureAirport.name = :departureAirportName " +
-            "AND DATE(f.departureTime) = :departureDate " +
-            "AND DATE(f.arrivalTime) = :arrivalDate")
-    List<Flight> findByRequest(@Param("departureAirportName") String departureAirportName,
-                               @Param("departureDate") LocalDate departureDate,
-                               @Param("arrivalDate") LocalDate arrivalDate
-    );
+    
 }

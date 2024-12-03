@@ -1,20 +1,19 @@
 package com.khaikin.airline.booking;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.khaikin.airline.flight.Flight;
 import com.khaikin.airline.passenger.Passenger;
 import com.khaikin.airline.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,13 +22,18 @@ public class Booking {
     @GeneratedValue
     private Integer id;
 
+    @Column(unique = true)
+    private String code;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonBackReference("booking")
     @ManyToOne
     @JoinColumn(name = "flight_id")
     private Flight flight;
+
 
     @ManyToMany
     @JoinTable(
@@ -39,7 +43,7 @@ public class Booking {
     private List<Passenger> passengers = new ArrayList<>();
 
 
-    private Date reservationDate;
+    private LocalDateTime reservationTime;
     private String status; // Example: Pending, CONFIRMED, CANCELLED, Completed
 
 

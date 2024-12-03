@@ -66,21 +66,13 @@ public class FlightServiceImpl implements FlightService {
         return flightRepository.save(flight);
     }
 
+
     @Override
     public List<Flight> findAppropriateFlight(FindFlightRequest findFlightRequest) {
-        // One way
-        if (findFlightRequest.getArrivalAirportName() == null) {
-            return flightRepository.findByRequest(
-                    findFlightRequest.getDepartureAirportName(),
-                    findFlightRequest.getDepartureDate(),
-                    findFlightRequest.getArrivalDate());
-        }
-
-        // Round trip
         return flightRepository.findByRequest(
                 findFlightRequest.getDepartureAirportName(),
                 findFlightRequest.getArrivalAirportName(),
                 findFlightRequest.getDepartureDate(),
-                findFlightRequest.getArrivalDate());
+                findFlightRequest.getPassengerNumber());
     }
 }

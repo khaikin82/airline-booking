@@ -5,11 +5,15 @@ import com.khaikin.airline.airport.AirportService;
 import com.khaikin.airline.flight.Flight;
 import com.khaikin.airline.flight.FlightRepository;
 import com.khaikin.airline.flight.FlightService;
+import com.khaikin.airline.seat.Seat;
+import com.khaikin.airline.seat.SeatType;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @AllArgsConstructor
@@ -36,10 +40,16 @@ public class DataSeeder implements CommandLineRunner {
                                        "Asean", "Viet Nam"
         );
 
+
         airportService.createAirport(airport1);
         airportService.createAirport(airport2);
         airportService.createAirport(airport3);
         airportService.createAirport(airport4);
+
+        // seatTypes
+        List<Seat> seats = new ArrayList<>();
+        seats.add(new Seat("A1", SeatType.STANDARD, 10000L, true));
+        seats.add(new Seat("D1", SeatType.BUSINESS, 20000L, true));
 
         // flight
         Flight flight0 = new Flight();
@@ -48,11 +58,13 @@ public class DataSeeder implements CommandLineRunner {
         flight0.setArrivalTime(LocalDateTime.of(2024, 1, 12, 15, 15));
         flight0.setStatus("Hello");
 
+
         Flight flight1 = new Flight();
         flight1.setFlightNumber("F1");
         flight1.setDepartureTime(LocalDateTime.of(2024, 1, 10, 10, 30));
         flight1.setArrivalTime(LocalDateTime.of(2024, 1, 12, 5, 0));
         flight1.setStatus("Arrived");
+
 
         Flight flight2 = new Flight();
         flight2.setFlightNumber("F2");
@@ -66,11 +78,13 @@ public class DataSeeder implements CommandLineRunner {
         flight3.setArrivalTime(LocalDateTime.of(2024, 1, 8, 5, 40));
         flight3.setStatus("Arrived");
 
+
         Flight flight4 = new Flight();
         flight4.setFlightNumber("F4");
         flight4.setDepartureTime(LocalDateTime.of(2024, 1, 9, 13, 30));
         flight4.setArrivalTime(LocalDateTime.of(2024, 1, 10, 15, 0));
         flight4.setStatus("Arrived");
+
 
         flightService.createFlight(flight0);
         flightService.createFlight(flight1);
