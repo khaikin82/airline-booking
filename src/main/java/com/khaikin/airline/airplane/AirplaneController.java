@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/airplanes")
@@ -21,5 +22,12 @@ public class AirplaneController {
     @PostMapping
     public Airplane createAirplane(@RequestBody Airplane airplane) {
         return airplaneService.createAirplane(airplane);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Airplane> updateAirplane(@PathVariable Integer id, @RequestBody Airplane updateAirplane) {
+        Optional<Airplane> updatedAirplane = airplaneService.updateAirplane(id, updateAirplane);
+        return updatedAirplane.map(airplane -> ResponseEntity.ok().body(airplane))
+                .orElse(ResponseEntity.notFound().build());
     }
 }
