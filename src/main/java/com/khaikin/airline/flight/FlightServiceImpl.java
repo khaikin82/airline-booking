@@ -6,9 +6,11 @@ import com.khaikin.airline.airport.Airport;
 import com.khaikin.airline.airport.AirportRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,10 +18,15 @@ public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
     private final AirplaneRepository airplaneRepository;
     private final AirportRepository airportRepository;
+    private final ModelMapper modelMapper;
+
 
     @Override
-    public List<Flight> getAllFlights() {
-        return flightRepository.findAll();
+    public List<FlightDto> getAllFlights() {
+        List<Flight> flights = flightRepository.findAll();
+        List<FlightDto> flightDtos = flights.stream().map(user -> modelMapper.map(user, FlightDto.class))
+                .collect(Collectors.toList());
+        return flightDtos;
     }
 
     @Override

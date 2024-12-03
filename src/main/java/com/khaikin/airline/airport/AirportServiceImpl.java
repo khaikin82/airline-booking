@@ -26,13 +26,5 @@ public class AirportServiceImpl implements AirportService {
         return airportRepository.findByArea(area);
     }
 
-    @Override
-    public List<Airport> findInCountry(String country) {
-        return airportRepository.findByCountry(country);
-    }
 
-//    @Override
-//    public List<Airport> findInCity(String city) {
-//        return airportRepository.findByCity(city);
-//    }
 }

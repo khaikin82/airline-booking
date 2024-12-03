@@ -29,4 +29,13 @@ public class SeatClass {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "flight_id")
     private Flight flight;
+
+    public SeatClass(SeatClassType seatClassType, Long price, Integer totalNumber, Integer bookedNumber,
+                     Flight flight) {
+        this.seatClassType = seatClassType;
+        this.price = price;
+        this.totalNumber = totalNumber;
+        this.bookedNumber = bookedNumber;
+        this.flight = flight;
+    }
 }

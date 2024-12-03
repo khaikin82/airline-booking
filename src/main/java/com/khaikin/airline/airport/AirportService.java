@@ -9,8 +9,5 @@ public interface AirportService {
 
     public List<Airport> findInArea(String area);
 
-    public List<Airport> findInCountry(String country);
-
-//    public List<Airport> findInCity(String city);
 
 }

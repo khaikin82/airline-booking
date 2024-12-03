@@ -6,7 +6,7 @@ import com.khaikin.airline.airport.Airport;
 import java.util.List;
 
 public interface FlightService {
-    public List<Flight> getAllFlights();
+    public List<FlightDto> getAllFlights();
 
     public Flight createFlight(Flight flight);
 

@@ -29,7 +29,7 @@ public class Flight {
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private String status;
-    
+
 
     @JsonManagedReference("seatClass")
     @OneToMany(mappedBy = "flight", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -55,7 +55,4 @@ public class Flight {
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
-//    @JsonManagedReference("seat")
-//    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
-//    private List<Seat> seats;
 }

@@ -25,16 +25,8 @@ public class Airport {
     private String code;
 
     private String area;
-    private String country;
-//    private String city;
-//    private String address;
+    private String city;
 
-    public Airport(String name, String code, String area, String country) {
-        this.name = name;
-        this.code = code;
-        this.area = area;
-        this.country = country;
-    }
 
     @JsonManagedReference("departure")
     @OneToMany(mappedBy = "departureAirport")
@@ -44,6 +36,14 @@ public class Airport {
     @JsonManagedReference("arrival")
     @OneToMany(mappedBy = "arrivalAirport")
     private List<Flight> arrivalFlights;
+
+    public Airport(String name, String code, String area, String city) {
+        this.name = name;
+        this.code = code;
+        this.area = area;
+        this.city = city;
+    }
+
     ;
 
 }
