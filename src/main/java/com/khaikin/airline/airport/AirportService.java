@@ -12,7 +12,7 @@ public interface AirportService {
 
     public void deleteAirportById(Integer id);
 
-    public List<Airport> getAirportsByArea(String area);
+    public List<Airport> getAirportsByArea(String region);
 
 
 }

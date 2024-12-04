@@ -24,7 +24,7 @@ public class Airport {
     private String name;
     private String code;
 
-    private String area;
+    private String region;
     private String city;
 
 
@@ -37,10 +37,10 @@ public class Airport {
     @OneToMany(mappedBy = "arrivalAirport")
     private List<Flight> arrivalFlights;
 
-    public Airport(String name, String code, String area, String city) {
+    public Airport(String name, String code, String region, String city) {
         this.name = name;
         this.code = code;
-        this.area = area;
+        this.region = region;
         this.city = city;
     }
 

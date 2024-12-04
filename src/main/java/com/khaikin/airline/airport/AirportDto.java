@@ -9,6 +9,6 @@ public class AirportDto {
     private String name;
     private String code;
 
-    private String area;
+    private String region;
     private String city;
 }
