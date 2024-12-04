@@ -1,5 +1,6 @@
 package com.khaikin.airline.airplane;
 
+import com.khaikin.airline.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,21 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
 
     @Override
-    public Optional<Airplane> getAirplane(Integer id) {
-        return airplaneRepository.findById(id);
+    public Airplane getAirplaneById(Integer id) {
+//        Optional<Airplane> airplane = airplaneRepository.findById(id);
+//        if (airplane.isPresent()) {
+//            return airplane.get();
+//        } else {
+//            throw new ResourceNotFoundException("Airplane not found with id: " + id);
+//        }
+        return airplaneRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Airplane not found with id: " + id
+                ));
     }
 
     @Override
-    public void deleteAirplane(Integer id) {
+    public void deleteAirplaneById(Integer id) {
         airplaneRepository.deleteById(id);
     }
 

@@ -30,4 +30,11 @@ public class Airplane {
     @JsonManagedReference("airplane")
     @OneToMany(mappedBy = "airplane", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Flight> flights = new ArrayList<>();
+
+    public Airplane(String code, String model, String manufacturer, int capacity) {
+        this.code = code;
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.capacity = capacity;
+    }
 }

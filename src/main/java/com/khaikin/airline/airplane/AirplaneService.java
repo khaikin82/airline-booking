@@ -8,9 +8,9 @@ public interface AirplaneService {
 
     public Airplane createAirplane(Airplane airplane);
 
-    public Optional<Airplane> getAirplane(Integer id);
+    public Airplane getAirplaneById(Integer id);
 
-    public void deleteAirplane(Integer id);
+    public void deleteAirplaneById(Integer id);
 
     public Optional<Airplane> updateAirplane(Integer id, Airplane updateAirplane);
 }

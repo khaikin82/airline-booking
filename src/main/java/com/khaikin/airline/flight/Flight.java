@@ -28,7 +28,9 @@ public class Flight {
 
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private FlightStatus flightStatus;
 
 
     @JsonManagedReference("seatClass")
@@ -55,4 +57,15 @@ public class Flight {
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
+    public Flight(LocalDateTime departureTime, String flightNumber, LocalDateTime arrivalTime,
+                  FlightStatus flightStatus,
+                  Airplane airplane, Airport departureAirport, Airport arrivalAirport) {
+        this.departureTime = departureTime;
+        this.flightNumber = flightNumber;
+        this.arrivalTime = arrivalTime;
+        this.flightStatus = flightStatus;
+        this.airplane = airplane;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
+    }
 }

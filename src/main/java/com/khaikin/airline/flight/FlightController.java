@@ -1,6 +1,8 @@
 package com.khaikin.airline.flight;
 
 
+import com.khaikin.airline.flight.dto.FindFlightRequest;
+import com.khaikin.airline.flight.dto.FlightDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

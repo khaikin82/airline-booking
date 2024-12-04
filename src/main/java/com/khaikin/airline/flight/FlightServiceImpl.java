@@ -1,9 +1,13 @@
 package com.khaikin.airline.flight;
 
 import com.khaikin.airline.airplane.Airplane;
+import com.khaikin.airline.airplane.AirplaneDto;
 import com.khaikin.airline.airplane.AirplaneRepository;
 import com.khaikin.airline.airport.Airport;
+import com.khaikin.airline.airport.AirportDto;
 import com.khaikin.airline.airport.AirportRepository;
+import com.khaikin.airline.flight.dto.FindFlightRequest;
+import com.khaikin.airline.flight.dto.FlightDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -24,7 +28,17 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<FlightDto> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
-        List<FlightDto> flightDtos = flights.stream().map(user -> modelMapper.map(user, FlightDto.class))
+        List<FlightDto> flightDtos = flights.stream().map(flight -> {
+                    FlightDto flightDto = modelMapper.map(flight, FlightDto.class);
+                    AirplaneDto airplaneDto = modelMapper.map(flight.getAirplane(), AirplaneDto.class);
+                    AirportDto departureAirportDto = modelMapper.map(flight.getDepartureAirport(), AirportDto.class);
+                    AirportDto arrivalAirportDto = modelMapper.map(flight.getArrivalAirport(), AirportDto.class);
+
+                    flightDto.setAirplane(airplaneDto);
+                    flightDto.setDepartureAirport(departureAirportDto);
+                    flightDto.setArrivalAirport(arrivalAirportDto);
+                    return flightDto;
+                })
                 .collect(Collectors.toList());
         return flightDtos;
     }

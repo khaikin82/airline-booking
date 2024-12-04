@@ -20,15 +20,14 @@ public class AirplaneController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Airplane> getAirplane(@PathVariable Integer id) {
-        Optional<Airplane> airplane = airplaneService.getAirplane(id);
-        return airplane.map(ResponseEntity::ok).orElseThrow(() -> new RuntimeException("Airplane not found " +
-                                                                                               "with id " + id));
+    public ResponseEntity<Airplane> getAirplaneById(@PathVariable Integer id) {
+        Airplane airplane = airplaneService.getAirplaneById(id);
+        return ResponseEntity.ok(airplane);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAirplane(@PathVariable Integer id) {
-        airplaneService.deleteAirplane(id);
+    public ResponseEntity<Void> deleteAirplaneById(@PathVariable Integer id) {
+        airplaneService.deleteAirplaneById(id);
         return ResponseEntity.noContent().build();
     }
 

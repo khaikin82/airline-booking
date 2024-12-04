@@ -2,6 +2,8 @@ package com.khaikin.airline.flight;
 
 
 import com.khaikin.airline.airport.Airport;
+import com.khaikin.airline.flight.dto.FindFlightRequest;
+import com.khaikin.airline.flight.dto.FlightDto;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.khaikin.airline.flight;
+package com.khaikin.airline.flight.dto;
 
 import lombok.Data;
 
