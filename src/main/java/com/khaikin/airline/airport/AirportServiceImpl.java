@@ -33,8 +33,8 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public List<Airport> getAirportsByArea(String region) {
-        return airportRepository.findByArea(region);
+    public List<Airport> getAirportsByRegion(String region) {
+        return airportRepository.findByRegion(region);
     }
 
 
