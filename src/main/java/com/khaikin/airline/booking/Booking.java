@@ -25,6 +25,9 @@ public class Booking {
     @Column(unique = true)
     private String code;
 
+    private String email;
+    private String phoneNumber;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

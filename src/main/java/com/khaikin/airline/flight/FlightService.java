@@ -22,7 +22,7 @@ public interface FlightService {
 
     public Flight updateArrivalAirport(Flight flight, Airport airport);
 
-    public List<Flight> findAppropriateFlight(FindFlightRequest findFlightRequest);
+    public List<FlightDto> findAppropriateFlight(FindFlightRequest findFlightRequest);
 
 }
 

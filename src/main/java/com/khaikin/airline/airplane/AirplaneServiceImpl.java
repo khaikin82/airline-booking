@@ -24,21 +24,22 @@ public class AirplaneServiceImpl implements AirplaneService {
 
     @Override
     public Airplane getAirplaneById(Integer id) {
-//        Optional<Airplane> airplane = airplaneRepository.findById(id);
-//        if (airplane.isPresent()) {
-//            return airplane.get();
-//        } else {
-//            throw new ResourceNotFoundException("Airplane not found with id: " + id);
-//        }
-        return airplaneRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Airplane not found with id: " + id
-                ));
+        Optional<Airplane> airplane = airplaneRepository.findById(id);
+        if (airplane.isPresent()) {
+            return airplane.get();
+        } else {
+            throw new ResourceNotFoundException("Airplane not found with id: " + id);
+        }
     }
 
     @Override
     public void deleteAirplaneById(Integer id) {
-        airplaneRepository.deleteById(id);
+        Optional<Airplane> airplane = airplaneRepository.findById(id);
+        if (airplane.isPresent()) {
+            airplaneRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Airplane not found with id: " + id);
+        }
     }
 
     @Override

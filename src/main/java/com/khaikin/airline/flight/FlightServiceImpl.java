@@ -89,11 +89,25 @@ public class FlightServiceImpl implements FlightService {
 
 
     @Override
-    public List<Flight> findAppropriateFlight(FindFlightRequest findFlightRequest) {
-        return flightRepository.findByRequest(
+    public List<FlightDto> findAppropriateFlight(FindFlightRequest findFlightRequest) {
+        List<Flight> flights = flightRepository.findByRequest(
                 findFlightRequest.getDepartureAirportId(),
                 findFlightRequest.getArrivalAirportId(),
                 findFlightRequest.getDepartureDate(),
                 findFlightRequest.getPassengerNumber());
+        List<FlightDto> flightDtos = flights.stream().map(flight -> {
+                    FlightDto flightDto = modelMapper.map(flight, FlightDto.class);
+                    AirplaneDto airplaneDto = modelMapper.map(flight.getAirplane(), AirplaneDto.class);
+                    AirportDto departureAirportDto = modelMapper.map(flight.getDepartureAirport(), AirportDto.class);
+                    AirportDto arrivalAirportDto = modelMapper.map(flight.getArrivalAirport(), AirportDto.class);
+
+                    flightDto.setAirplane(airplaneDto);
+                    flightDto.setDepartureAirport(departureAirportDto);
+                    flightDto.setArrivalAirport(arrivalAirportDto);
+                    return flightDto;
+                })
+                .collect(Collectors.toList());
+
+        return flightDtos;
     }
 }

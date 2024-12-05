@@ -46,7 +46,7 @@ public class FlightController {
     }
 
     @PostMapping("/find")
-    public List<Flight> findAppropriateFlight(@RequestBody FindFlightRequest findFlightRequest) {
+    public List<FlightDto> findAppropriateFlight(@RequestBody FindFlightRequest findFlightRequest) {
         return flightService.findAppropriateFlight(findFlightRequest);
     }
 }

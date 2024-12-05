@@ -22,9 +22,7 @@ public class Passenger {
 
     @Column(unique = true)
     private String passportNumber;
-
-    private String email;
-    private String phoneNumber;
+    
     private String dob;
     private String type; // adults, children, infants
 
