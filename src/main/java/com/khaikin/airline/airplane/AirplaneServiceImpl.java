@@ -43,14 +43,18 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
 
     @Override
-    public Optional<Airplane> updateAirplane(Integer id, Airplane updateAirplane) {
-        return airplaneRepository.findById(id).map(airplane -> {
+    public Airplane updateAirplane(Integer id, Airplane updateAirplane) {
+        Optional<Airplane> airplaneOptional = airplaneRepository.findById(id);
+        if (airplaneOptional.isPresent()) {
+            Airplane airplane = airplaneOptional.get();
             airplane.setCode(updateAirplane.getCode());
             airplane.setModel(updateAirplane.getModel());
             airplane.setManufacturer(updateAirplane.getManufacturer());
             airplane.setEconomySeatNumber(updateAirplane.getEconomySeatNumber());
             airplane.setBusinessSeatNumber(updateAirplane.getBusinessSeatNumber());
             return airplaneRepository.save(airplane);
-        });
+        } else {
+            throw new ResourceNotFoundException("Airplane not found with id: " + id);
+        }
     }
 }

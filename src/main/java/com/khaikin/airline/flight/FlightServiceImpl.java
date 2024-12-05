@@ -6,6 +6,7 @@ import com.khaikin.airline.airplane.AirplaneRepository;
 import com.khaikin.airline.airport.Airport;
 import com.khaikin.airline.airport.AirportDto;
 import com.khaikin.airline.airport.AirportRepository;
+import com.khaikin.airline.exception.ResourceNotFoundException;
 import com.khaikin.airline.flight.dto.FindFlightRequest;
 import com.khaikin.airline.flight.dto.FlightDto;
 import jakarta.transaction.Transactional;
@@ -50,18 +51,20 @@ public class FlightServiceImpl implements FlightService {
 
     @Transactional
     public Flight updateAirplane(Integer flightId, Integer airplaneId) {
-        Flight flight = flightRepository.findById(flightId).orElseThrow(() -> new RuntimeException("Flight not found"));
+        Flight flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found"));
         Airplane airplane = airplaneRepository.findById(airplaneId)
-                .orElseThrow(() -> new RuntimeException("Airplane not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Airplane not found"));
         flight.setAirplane(airplane);
         return flightRepository.save(flight);
     }
 
     @Override
     public Flight updateDepartureAirport(Integer flightId, Integer airportId) {
-        Flight flight = flightRepository.findById(flightId).orElseThrow(() -> new RuntimeException("Flight not found"));
+        Flight flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found"));
         Airport airport = airportRepository.findById(airportId)
-                .orElseThrow(() -> new RuntimeException("Departure Airport not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Departure Airport not found"));
         flight.setDepartureAirport(airport);
         return flightRepository.save(flight);
     }
@@ -74,9 +77,10 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight updateArrivalAirport(Integer flightId, Integer airportId) {
-        Flight flight = flightRepository.findById(flightId).orElseThrow(() -> new RuntimeException("Flight not found"));
+        Flight flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found"));
         Airport airport = airportRepository.findById(airportId)
-                .orElseThrow(() -> new RuntimeException("Arrival Airport not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Arrival Airport not found"));
         flight.setArrivalAirport(airport);
         return flightRepository.save(flight);
     }

@@ -34,15 +34,17 @@ public class FlightController {
     }
 
     @PutMapping("/update-departure-airport")
-    public Flight updateDepartureAirport(@RequestParam Integer flightId, @RequestParam Integer airportId) {
+    public ResponseEntity<Flight> updateDepartureAirport(@RequestParam Integer flightId,
+                                                         @RequestParam Integer airportId) {
         Flight updatedFlight = flightService.updateDepartureAirport(flightId, airportId);
-        return updatedFlight;
+        return ResponseEntity.ok(updatedFlight);
     }
 
     @PutMapping("/update-arrival-airport")
-    public Flight updateArrivalAirport(@RequestParam Integer flightId, @RequestParam Integer airportId) {
+    public ResponseEntity<Flight> updateArrivalAirport(@RequestParam Integer flightId,
+                                                       @RequestParam Integer airportId) {
         Flight updatedFlight = flightService.updateDepartureAirport(flightId, airportId);
-        return updatedFlight;
+        return ResponseEntity.ok(updatedFlight);
     }
 
     @PostMapping("/find")

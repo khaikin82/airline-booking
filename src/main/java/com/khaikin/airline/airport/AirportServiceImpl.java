@@ -1,5 +1,6 @@
 package com.khaikin.airline.airport;
 
+import com.khaikin.airline.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,13 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public Optional<Airport> getAirportById(Integer id) {
-        return airportRepository.findById(id);
+    public Airport getAirportById(Integer id) {
+        Optional<Airport> airport = airportRepository.findById(id);
+        if (airport.isPresent()) {
+            return airport.get();
+        } else {
+            throw new ResourceNotFoundException("Airport not found with id: " + id);
+        }
     }
 
     @Override

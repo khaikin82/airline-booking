@@ -1,12 +1,10 @@
 package com.khaikin.airline.airport;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/airports")
@@ -22,9 +20,8 @@ public class AirportController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Airport> getAirportById(@PathVariable Integer id) {
-        Optional<Airport> airport = airportService.getAirportById(id);
-        return airport.map(ResponseEntity::ok)
-                .orElseThrow(() -> new EntityNotFoundException("Airport not found with id " + id));
+        Airport airport = airportService.getAirportById(id);
+        return ResponseEntity.ok(airport);
     }
 
     @DeleteMapping("/{id}")
