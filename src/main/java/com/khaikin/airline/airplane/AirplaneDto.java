@@ -11,5 +11,6 @@ public class AirplaneDto {
 
     private String model;
     private String manufacturer;
-    private int capacity;
+    private Integer economySeatNumber;
+    private Integer businessSeatNumber;
 }

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.khaikin.airline.airplane.Airplane;
 import com.khaikin.airline.airport.Airport;
 import com.khaikin.airline.booking.Booking;
-import com.khaikin.airline.seatclass.SeatClass;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,10 +31,10 @@ public class Flight {
     @Enumerated(EnumType.STRING)
     private FlightStatus flightStatus;
 
-
-    @JsonManagedReference("seatClass")
-    @OneToMany(mappedBy = "flight", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<SeatClass> seatClasses;
+    private Long economyPrice;
+    private Long businessPrice;
+    private Integer economySeatBookedNumber = 0;
+    private Integer businessSeatBookedNumber = 0;
 
     @JsonBackReference("airplane")
     @ManyToOne(fetch = FetchType.EAGER)
@@ -68,4 +67,5 @@ public class Flight {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
     }
+
 }

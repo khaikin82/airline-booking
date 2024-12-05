@@ -48,7 +48,8 @@ public class AirplaneServiceImpl implements AirplaneService {
             airplane.setCode(updateAirplane.getCode());
             airplane.setModel(updateAirplane.getModel());
             airplane.setManufacturer(updateAirplane.getManufacturer());
-            airplane.setCapacity(updateAirplane.getCapacity());
+            airplane.setEconomySeatNumber(updateAirplane.getEconomySeatNumber());
+            airplane.setBusinessSeatNumber(updateAirplane.getBusinessSeatNumber());
             return airplaneRepository.save(airplane);
         });
     }

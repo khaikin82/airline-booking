@@ -1,6 +1,6 @@
-package com.khaikin.airline.seatclass;
-
-public enum SeatClassType {
-    ECONOMY,
-    BUSINESS
-}
+//package com.khaikin.airline.seatclass;
+//
+//public enum SeatClassType {
+//    ECONOMY,
+//    BUSINESS
+//}

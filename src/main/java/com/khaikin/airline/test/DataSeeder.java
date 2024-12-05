@@ -7,9 +7,6 @@ import com.khaikin.airline.airport.AirportService;
 import com.khaikin.airline.flight.Flight;
 import com.khaikin.airline.flight.FlightService;
 import com.khaikin.airline.flight.FlightStatus;
-import com.khaikin.airline.seatclass.SeatClass;
-import com.khaikin.airline.seatclass.SeatClassService;
-import com.khaikin.airline.seatclass.SeatClassType;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -24,7 +21,6 @@ public class DataSeeder implements CommandLineRunner {
     private final AirportService airportService;
     private final FlightService flightService;
     private final AirplaneService airplaneService;
-    private final SeatClassService seatClassService;
 
     @Override
     public void run(String... args)
@@ -64,17 +60,17 @@ public class DataSeeder implements CommandLineRunner {
 
         // airplane
         List<Airplane> airplanes = new ArrayList<>();
-        airplanes.add(new Airplane("AP001", "Boeing 737", "Boeing", 180));
-        airplanes.add(new Airplane("AP002", "Airbus A320", "Airbus", 160));
-        airplanes.add(new Airplane("AP003", "Boeing 787", "Boeing", 242));
-        airplanes.add(new Airplane("AP004", "Airbus A350", "Airbus", 300));
-        airplanes.add(new Airplane("AP005", "Boeing 777", "Boeing", 396));
+        airplanes.add(new Airplane("AP001", "Boeing 737", "Boeing", 200, 50));
+        airplanes.add(new Airplane("AP002", "Airbus A320", "Airbus", 160, 40));
+        airplanes.add(new Airplane("AP003", "Boeing 787", "Boeing", 280, 80));
+        airplanes.add(new Airplane("AP004", "Airbus A350", "Airbus", 300, 100));
+        airplanes.add(new Airplane("AP005", "Boeing 777", "Boeing", 400, 150));
 
-        airplanes.add(new Airplane("AP006", "Airbus A330", "Airbus", 300));
-        airplanes.add(new Airplane("AP007", "Boeing 747", "Boeing", 416));
-        airplanes.add(new Airplane("AP008", "Airbus A340", "Airbus", 380));
-        airplanes.add(new Airplane("AP009", "Boeing 767", "Boeing", 290));
-        airplanes.add(new Airplane("AP010", "Airbus A380", "Airbus", 555));
+        airplanes.add(new Airplane("AP006", "Airbus A330", "Airbus", 180, 30));
+        airplanes.add(new Airplane("AP007", "Boeing 747", "Boeing", 200, 80));
+        airplanes.add(new Airplane("AP008", "Airbus A340", "Airbus", 400, 200));
+        airplanes.add(new Airplane("AP009", "Boeing 767", "Boeing", 300, 150));
+        airplanes.add(new Airplane("AP010", "Airbus A380", "Airbus", 180, 25));
 
         for (Airplane airplane : airplanes) {
             airplaneService.createAirplane(airplane);
@@ -127,20 +123,6 @@ public class DataSeeder implements CommandLineRunner {
         for (Flight flight : flights) {
             flightService.createFlight(flight);
         }
-
-
-        // seatClasses
-        List<SeatClass> seatClasses = new ArrayList<>();
-        seatClasses.add(new SeatClass(SeatClassType.ECONOMY, 1000000L, 200, 150, flights.get(0)));
-        seatClasses.add(new SeatClass(SeatClassType.BUSINESS, 5000000L, 50, 30, flights.get(0)));
-        seatClasses.add(new SeatClass(SeatClassType.ECONOMY, 1400000L, 190, 5, flights.get(1)));
-        seatClasses.add(new SeatClass(SeatClassType.ECONOMY, 1200000L, 180, 160, flights.get(2)));
-        seatClasses.add(new SeatClass(SeatClassType.BUSINESS, 4500000L, 60, 45, flights.get(1)));
-
-        for (SeatClass seatClass : seatClasses) {
-            seatClassService.createSeatClass(seatClass);
-        }
-
 
     }
 }
