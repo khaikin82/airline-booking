@@ -15,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,6 +48,26 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight createFlight(Flight flight) {
         return flightRepository.save(flight);
+    }
+
+    @Override
+    public FlightDto getFlightById(Integer id) {
+        Optional<Flight> flightOptional = flightRepository.findById(id);
+        if (flightOptional.isPresent()) {
+            Flight flight = flightOptional.get();
+            FlightDto flightDto = modelMapper.map(flight, FlightDto.class);
+            AirplaneDto airplaneDto = modelMapper.map(flight.getAirplane(), AirplaneDto.class);
+            AirportDto departureAirportDto = modelMapper.map(flight.getDepartureAirport(), AirportDto.class);
+            AirportDto arrivalAirportDto = modelMapper.map(flight.getArrivalAirport(), AirportDto.class);
+
+            flightDto.setAirplane(airplaneDto);
+            flightDto.setDepartureAirport(departureAirportDto);
+            flightDto.setArrivalAirport(arrivalAirportDto);
+
+            return flightDto;
+        } else {
+            throw new ResourceNotFoundException("Flight not found");
+        }
     }
 
     @Transactional

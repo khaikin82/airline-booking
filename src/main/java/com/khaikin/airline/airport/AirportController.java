@@ -24,14 +24,15 @@ public class AirportController {
         return ResponseEntity.ok(airport);
     }
 
+    @PostMapping
+    public Airport createAirport(@RequestBody Airport airport) {
+        return airportService.createAirport(airport);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAirportById(@PathVariable Integer id) {
         airportService.deleteAirportById(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping
-    public Airport createAirport(@RequestBody Airport airport) {
-        return airportService.createAirport(airport);
-    }
 }

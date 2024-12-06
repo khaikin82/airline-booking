@@ -39,6 +39,16 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public Booking getBookingById(Integer id) {
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()) {
+            return booking.get();
+        } else {
+            throw new ResourceNotFoundException("Booking not found");
+        }
+    }
+
+    @Override
     public void deleteBookingById(Integer id) {
         Optional<Booking> booking = bookingRepository.findById(id);
         if (booking.isPresent()) {

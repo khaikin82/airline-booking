@@ -17,6 +17,12 @@ public class BookingController {
         return bookingService.getAllBookings();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Booking> getBookingById(@PathVariable Integer id) {
+        Booking booking = bookingService.getBookingById(id);
+        return ResponseEntity.ok(booking);
+    }
+
     @PostMapping
     public Booking createBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);

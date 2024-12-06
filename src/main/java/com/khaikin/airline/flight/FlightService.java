@@ -12,6 +12,8 @@ public interface FlightService {
 
     public Flight createFlight(Flight flight);
 
+    public FlightDto getFlightById(Integer id);
+
     public Flight updateAirplane(Integer flightId, Integer airplaneId);
 
     public Flight updateDepartureAirport(Integer flightId, Integer airportId);

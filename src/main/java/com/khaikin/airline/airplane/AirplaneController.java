@@ -24,7 +24,6 @@ public class AirplaneController {
         return ResponseEntity.ok(airplane);
     }
 
-
     @PostMapping
     public Airplane createAirplane(@RequestBody Airplane airplane) {
         return airplaneService.createAirplane(airplane);
