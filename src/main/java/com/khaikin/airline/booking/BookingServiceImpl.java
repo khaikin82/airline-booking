@@ -1,5 +1,6 @@
 package com.khaikin.airline.booking;
 
+import com.khaikin.airline.passenger.PassengerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
-
+    private final PassengerRepository passengerRepository;
 
     @Override
     public List<Booking> getAllBookings() {

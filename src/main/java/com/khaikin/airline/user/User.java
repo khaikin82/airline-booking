@@ -1,6 +1,7 @@
 package com.khaikin.airline.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.khaikin.airline.booking.Booking;
 import com.khaikin.airline.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,14 +34,14 @@ public class User implements UserDetails {
     @NaturalId
     private String email;
     private String password;
-//    private String phone;
-//    private Date dob;
+    private String phoneNumber;
+    private LocalDate dob;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role; // USER, ADMIN
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Booking> bookings = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Booking> bookings = new ArrayList<>();
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -48,6 +51,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
+
 
     @Override
     public String getPassword() {

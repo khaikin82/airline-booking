@@ -1,9 +1,8 @@
 package com.khaikin.airline.passenger;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.khaikin.airline.booking.Booking;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,15 +16,39 @@ public class Passenger {
     @GeneratedValue
     private Integer id;
 
+    @Enumerated(EnumType.STRING)
+    private PassengerTitle passengerTitle; // MR, MRS, MS, DOCTOR, PROFESSOR
+
+
     private String firstname;
     private String lastname;
 
-    @Column(unique = true)
-    private String passportNumber;
-    
-    private String dob;
-    private String type; // adults, children, infants
+    @Enumerated(EnumType.STRING)
+    private PassengerType passengerType; // ADULT, CHILD, INFANT
 
-//    @ManyToMany(mappedBy = "booking")
-//    private List<Booking> booking = new ArrayList<>();
+    private String dob;
+
+    @JsonBackReference("passenger")
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
+
+    public Passenger(PassengerTitle passengerTitle, String firstname, String lastname, PassengerType passengerType,
+                     String dob) {
+        this.passengerTitle = passengerTitle;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.passengerType = passengerType;
+        this.dob = dob;
+    }
+
+    public Passenger(PassengerTitle passengerTitle, String firstname, String lastname, PassengerType passengerType,
+                     String dob, Booking booking) {
+        this.passengerTitle = passengerTitle;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.passengerType = passengerType;
+        this.dob = dob;
+        this.booking = booking;
+    }
 }
