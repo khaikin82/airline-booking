@@ -1,5 +1,6 @@
 package com.khaikin.airline.booking;
 
+import com.khaikin.airline.exception.ResourceNotFoundException;
 import com.khaikin.airline.passenger.PassengerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +36,45 @@ public class BookingServiceImpl implements BookingService {
         }
 
         return savedBooking;
+    }
+
+    @Override
+    public void deleteBookingById(Integer id) {
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()) {
+            bookingRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Booking not found with id: " + id);
+        }
+    }
+
+    @Override
+    public Booking updateBooking(Integer id, Booking updateBooking) {
+        Optional<Booking> bookingOptional = bookingRepository.findById(id);
+        if (bookingOptional.isPresent()) {
+            Booking booking = bookingOptional.get();
+            booking.setEmail(updateBooking.getEmail());
+            booking.setPhoneNumber(updateBooking.getPhoneNumber());
+            booking.setFlight(updateBooking.getFlight());
+            booking.setPassengers(updateBooking.getPassengers());
+            booking.setBookingStatus(updateBooking.getBookingStatus());
+            booking.setUser(updateBooking.getUser());
+            return bookingRepository.save(booking);
+        } else {
+            throw new ResourceNotFoundException("Booking not found");
+        }
+    }
+
+    @Override
+    public Booking updateBookingStatus(Integer id, BookingStatus bookingStatus) {
+        Optional<Booking> bookingOptional = bookingRepository.findById(id);
+        if (bookingOptional.isPresent()) {
+            Booking booking = bookingOptional.get();
+            booking.setBookingStatus(bookingStatus);
+            return bookingRepository.save(booking);
+        } else {
+            throw new ResourceNotFoundException("Booking not found");
+        }
     }
 
     private String generateRandomString(int length) {

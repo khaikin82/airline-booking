@@ -24,11 +24,6 @@ public class AirplaneController {
         return ResponseEntity.ok(airplane);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAirplaneById(@PathVariable Integer id) {
-        airplaneService.deleteAirplaneById(id);
-        return ResponseEntity.noContent().build();
-    }
 
     @PostMapping
     public Airplane createAirplane(@RequestBody Airplane airplane) {
@@ -39,5 +34,11 @@ public class AirplaneController {
     public ResponseEntity<Airplane> updateAirplane(@PathVariable Integer id, @RequestBody Airplane updateAirplane) {
         Airplane updatedAirplane = airplaneService.updateAirplane(id, updateAirplane);
         return ResponseEntity.ok(updatedAirplane);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAirplaneById(@PathVariable Integer id) {
+        airplaneService.deleteAirplaneById(id);
+        return ResponseEntity.noContent().build();
     }
 }
