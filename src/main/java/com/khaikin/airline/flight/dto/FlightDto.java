@@ -2,7 +2,7 @@ package com.khaikin.airline.flight.dto;
 
 import com.khaikin.airline.airplane.AirplaneDto;
 import com.khaikin.airline.airport.AirportDto;
-import com.khaikin.airline.booking.Booking;
+import com.khaikin.airline.booking.BookingDto;
 import com.khaikin.airline.flight.FlightStatus;
 import lombok.Data;
 
@@ -27,5 +27,5 @@ public class FlightDto {
     private AirplaneDto airplane;
     private AirportDto departureAirport;
     private AirportDto arrivalAirport;
-    private List<Booking> bookings;
+    private List<BookingDto> bookings;
 }

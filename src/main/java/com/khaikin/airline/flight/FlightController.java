@@ -28,33 +28,27 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
-        Flight newFlight = flightService.createFlight(flight);
-        return ResponseEntity.ok(newFlight);
-    }
-
-    @PutMapping("/update-airplane")
-    public ResponseEntity<Flight> updateAirplane(@RequestParam Integer flightId, @RequestParam Integer airplaneId) {
-        Flight updatedFlight = flightService.updateAirplane(flightId, airplaneId);
-        return ResponseEntity.ok(updatedFlight);
-    }
-
-    @PutMapping("/update-departure-airport")
-    public ResponseEntity<Flight> updateDepartureAirport(@RequestParam Integer flightId,
-                                                         @RequestParam Integer airportId) {
-        Flight updatedFlight = flightService.updateDepartureAirport(flightId, airportId);
-        return ResponseEntity.ok(updatedFlight);
-    }
-
-    @PutMapping("/update-arrival-airport")
-    public ResponseEntity<Flight> updateArrivalAirport(@RequestParam Integer flightId,
-                                                       @RequestParam Integer airportId) {
-        Flight updatedFlight = flightService.updateDepartureAirport(flightId, airportId);
-        return ResponseEntity.ok(updatedFlight);
+    public ResponseEntity<FlightDto> createFlight(@RequestBody Flight flight) {
+        FlightDto newFlightDto = flightService.createFlight(flight);
+        return ResponseEntity.ok(newFlightDto);
     }
 
     @PostMapping("/find")
     public List<FlightDto> findAppropriateFlight(@RequestBody FindFlightRequest findFlightRequest) {
         return flightService.findAppropriateFlight(findFlightRequest);
     }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<FlightDto> updateAirplane(@PathVariable Integer id, @RequestBody Flight updateFlight) {
+        FlightDto updatedFlight = flightService.updateFlight(id, updateFlight);
+        return ResponseEntity.ok(updatedFlight);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAirplaneById(@PathVariable Integer id) {
+        flightService.deleteFlightById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
