@@ -43,5 +43,20 @@ public class AirportServiceImpl implements AirportService {
         return airportRepository.findByRegion(region);
     }
 
+    @Override
+    public Airport updateAirport(Integer id, Airport updateAirport) {
+        Optional<Airport> airportOptional = airportRepository.findById(id);
+        if (airportOptional.isPresent()) {
+            Airport airport = airportOptional.get();
+            airport.setCode(updateAirport.getCode());
+            airport.setName(updateAirport.getName());
+            airport.setRegion(updateAirport.getRegion());
+            airport.setCity(updateAirport.getCity());
+            return airportRepository.save(airport);
+        } else {
+            throw new ResourceNotFoundException("Airport not found!");
+        }
+    }
+
 
 }

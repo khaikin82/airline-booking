@@ -13,5 +13,6 @@ public interface AirportService {
 
     public List<Airport> getAirportsByRegion(String region);
 
+    public Airport updateAirport(Integer id, Airport updateAirport);
 
 }
