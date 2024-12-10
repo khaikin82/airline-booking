@@ -22,6 +22,16 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public Booking getBookingById(Integer id) {
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()) {
+            return booking.get();
+        } else {
+            throw new ResourceNotFoundException("Booking not found");
+        }
+    }
+
+    @Override
     public Booking createBooking(Booking booking) {
         booking.setReservationTime(LocalDateTime.now());
         Booking savedBooking = booking;
@@ -36,26 +46,6 @@ public class BookingServiceImpl implements BookingService {
         }
 
         return savedBooking;
-    }
-
-    @Override
-    public Booking getBookingById(Integer id) {
-        Optional<Booking> booking = bookingRepository.findById(id);
-        if (booking.isPresent()) {
-            return booking.get();
-        } else {
-            throw new ResourceNotFoundException("Booking not found");
-        }
-    }
-
-    @Override
-    public void deleteBookingById(Integer id) {
-        Optional<Booking> booking = bookingRepository.findById(id);
-        if (booking.isPresent()) {
-            bookingRepository.deleteById(id);
-        } else {
-            throw new ResourceNotFoundException("Booking not found with id: " + id);
-        }
     }
 
     @Override
@@ -84,6 +74,16 @@ public class BookingServiceImpl implements BookingService {
             return bookingRepository.save(booking);
         } else {
             throw new ResourceNotFoundException("Booking not found");
+        }
+    }
+
+    @Override
+    public void deleteBookingById(Integer id) {
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()) {
+            bookingRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Booking not found with id: " + id);
         }
     }
 

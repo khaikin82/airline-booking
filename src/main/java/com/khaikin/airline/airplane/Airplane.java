@@ -29,6 +29,8 @@ public class Airplane {
     private Integer economySeatNumber;
     private Integer businessSeatNumber;
 
+    private Boolean isActive = true;
+
     @JsonManagedReference("airplane")
     @OneToMany(mappedBy = "airplane", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Flight> flights = new ArrayList<>();

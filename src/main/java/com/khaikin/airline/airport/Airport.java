@@ -27,6 +27,7 @@ public class Airport {
     private String region;
     private String city;
 
+    private Boolean isActive = true;
 
     @JsonManagedReference("departure")
     @OneToMany(mappedBy = "departureAirport")

@@ -9,15 +9,16 @@ import java.util.List;
 public interface FlightService {
     public List<FlightDto> getAllFlights();
 
+    public FlightDto getFlightById(Integer id);
+
     public FlightDto createFlight(Flight flight);
 
-    public FlightDto getFlightById(Integer id);
 
     public List<FlightDto> findAppropriateFlight(FindFlightRequest findFlightRequest);
 
-    public void deleteFlightById(Integer id);
-
     public FlightDto updateFlight(Integer id, Flight updateFlight);
+
+    public void deleteFlightById(Integer id);
 
 }
 

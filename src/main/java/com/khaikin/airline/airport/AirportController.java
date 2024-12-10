@@ -35,6 +35,12 @@ public class AirportController {
         return ResponseEntity.ok(updatedAirport);
     }
 
+    @PutMapping("/{id}/active/{isActive}")
+    public ResponseEntity<Airport> setAirplaneActive(@PathVariable Integer id, @PathVariable Boolean isActive) {
+        Airport airport = airportService.setAirportActive(id, isActive);
+        return ResponseEntity.ok(airport);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAirportById(@PathVariable Integer id) {
         airportService.deleteAirportById(id);

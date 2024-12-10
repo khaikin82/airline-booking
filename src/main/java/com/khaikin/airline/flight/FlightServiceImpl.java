@@ -32,13 +32,6 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public FlightDto createFlight(Flight flight) {
-        Flight newFlight = flightRepository.save(flight);
-        FlightDto newFlightDto = modelMapper.map(newFlight, FlightDto.class);
-        return newFlightDto;
-    }
-
-    @Override
     public FlightDto getFlightById(Integer id) {
         Optional<Flight> flightOptional = flightRepository.findById(id);
         if (flightOptional.isPresent()) {
@@ -48,6 +41,13 @@ public class FlightServiceImpl implements FlightService {
         } else {
             throw new ResourceNotFoundException("Flight not found");
         }
+    }
+
+    @Override
+    public FlightDto createFlight(Flight flight) {
+        Flight newFlight = flightRepository.save(flight);
+        FlightDto newFlightDto = modelMapper.map(newFlight, FlightDto.class);
+        return newFlightDto;
     }
 
 
@@ -65,16 +65,6 @@ public class FlightServiceImpl implements FlightService {
                 .collect(Collectors.toList());
 
         return flightDtos;
-    }
-
-    @Override
-    public void deleteFlightById(Integer id) {
-        Optional<Flight> flightOptional = flightRepository.findById(id);
-        if (flightOptional.isPresent()) {
-            airplaneRepository.deleteById(id);
-        } else {
-            throw new ResourceNotFoundException("Flight not found with id: " + id);
-        }
     }
 
     @Override
@@ -100,6 +90,16 @@ public class FlightServiceImpl implements FlightService {
             return flightDto;
         } else {
             throw new ResourceNotFoundException("Flight not found!");
+        }
+    }
+
+    @Override
+    public void deleteFlightById(Integer id) {
+        Optional<Flight> flightOptional = flightRepository.findById(id);
+        if (flightOptional.isPresent()) {
+            airplaneRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Flight not found with id: " + id);
         }
     }
 }

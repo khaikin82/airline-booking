@@ -93,6 +93,15 @@ public class DataSeeder implements CommandLineRunner {
                                "VN123",
                                LocalDateTime.of(2024, 10, 4, 8, 0),
                                FlightStatus.ARRIVED, airplanes.get(0), airports.get(0), airports.get(1)));
+
+        flights.add(new Flight(LocalDateTime.of(2024, 11, 7, 16, 0),
+                               "VN124",
+                               LocalDateTime.of(2024, 11, 7, 18, 0),
+                               FlightStatus.ARRIVED, airplanes.get(9), airports.get(8), airports.get(16)));
+        flights.add(new Flight(LocalDateTime.of(2024, 11, 8, 6, 0),
+                               "VN125",
+                               LocalDateTime.of(2024, 11, 8, 8, 0),
+                               FlightStatus.ARRIVED, airplanes.get(8), airports.get(15), airports.get(16)));
         flights.add(new Flight(LocalDateTime.of(2024, 12, 4, 10, 0),
                                "VN456",
                                LocalDateTime.of(2024, 12, 4, 15, 0),

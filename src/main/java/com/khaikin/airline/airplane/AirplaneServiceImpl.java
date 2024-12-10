@@ -1,6 +1,9 @@
 package com.khaikin.airline.airplane;
 
+import com.khaikin.airline.exception.ConflictException;
 import com.khaikin.airline.exception.ResourceNotFoundException;
+import com.khaikin.airline.flight.Flight;
+import com.khaikin.airline.flight.FlightRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,15 +14,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AirplaneServiceImpl implements AirplaneService {
     private final AirplaneRepository airplaneRepository;
+    private final FlightRepository flightRepository;
 
     @Override
     public List<Airplane> getAllAirplanes() {
         return airplaneRepository.findAll();
-    }
-
-    @Override
-    public Airplane createAirplane(Airplane airplane) {
-        return airplaneRepository.save(airplane);
     }
 
     @Override
@@ -33,14 +32,10 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
 
     @Override
-    public void deleteAirplaneById(Integer id) {
-        Optional<Airplane> airplane = airplaneRepository.findById(id);
-        if (airplane.isPresent()) {
-            airplaneRepository.deleteById(id);
-        } else {
-            throw new ResourceNotFoundException("Airplane not found with id: " + id);
-        }
+    public Airplane createAirplane(Airplane airplane) {
+        return airplaneRepository.save(airplane);
     }
+
 
     @Override
     public Airplane updateAirplane(Integer id, Airplane updateAirplane) {
@@ -53,6 +48,42 @@ public class AirplaneServiceImpl implements AirplaneService {
             airplane.setEconomySeatNumber(updateAirplane.getEconomySeatNumber());
             airplane.setBusinessSeatNumber(updateAirplane.getBusinessSeatNumber());
             return airplaneRepository.save(airplane);
+        } else {
+            throw new ResourceNotFoundException("Airplane not found with id: " + id);
+        }
+    }
+
+    @Override
+    public Airplane setAirplaneActive(Integer id, Boolean isActive) {
+        Optional<Airplane> airplaneOptional = airplaneRepository.findById(id);
+        if (airplaneOptional.isPresent()) {
+            Airplane airplane = airplaneOptional.get();
+            if (airplane.getIsActive() == isActive) {
+                return airplane;
+            }
+            List<Flight> flights = flightRepository.findFlightsInUseByAirplaneId(id);
+            if (flights != null && !flights.isEmpty()) {
+                throw new ConflictException("Airplane in use with id: " + id);
+            }
+            airplane.setIsActive(isActive);
+            return airplaneRepository.save(airplane);
+        } else {
+            throw new ResourceNotFoundException("Airplane not found with id: " + id);
+        }
+    }
+
+    @Override
+    public void deleteAirplaneById(Integer id) {
+        Optional<Airplane> airplaneOptional = airplaneRepository.findById(id);
+        if (airplaneOptional.isPresent()) {
+            Airplane airplane = airplaneOptional.get();
+
+            if (airplane.getFlights().isEmpty()) {
+                airplaneRepository.deleteById(id);
+            } else {
+                throw new ConflictException("Airplane in use!");
+            }
+
         } else {
             throw new ResourceNotFoundException("Airplane not found with id: " + id);
         }

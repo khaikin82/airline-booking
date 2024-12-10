@@ -4,15 +4,14 @@ import java.util.List;
 
 public interface BookingService {
     public List<Booking> getAllBookings();
-    
-    public Booking createBooking(Booking booking);
 
     public Booking getBookingById(Integer id);
 
-    public void deleteBookingById(Integer id);
+    public Booking createBooking(Booking booking);
 
     public Booking updateBooking(Integer id, Booking updateBooking);
 
     public Booking updateBookingStatus(Integer id, BookingStatus bookingStatus);
 
+    public void deleteBookingById(Integer id);
 }

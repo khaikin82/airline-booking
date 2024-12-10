@@ -1,6 +1,9 @@
 package com.khaikin.airline.airport;
 
+import com.khaikin.airline.exception.ConflictException;
 import com.khaikin.airline.exception.ResourceNotFoundException;
+import com.khaikin.airline.flight.Flight;
+import com.khaikin.airline.flight.FlightRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +14,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AirportServiceImpl implements AirportService {
     private final AirportRepository airportRepository;
-
+    private final FlightRepository flightRepository;
 
     @Override
     public List<Airport> getAllAirports() {
         return airportRepository.findAll();
-    }
-
-    @Override
-    public Airport createAirport(Airport airport) {
-        return airportRepository.save(airport);
     }
 
     @Override
@@ -34,13 +32,13 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public void deleteAirportById(Integer id) {
-        airportRepository.deleteById(id);
+    public List<Airport> getAirportsByRegion(String region) {
+        return airportRepository.findByRegion(region);
     }
 
     @Override
-    public List<Airport> getAirportsByRegion(String region) {
-        return airportRepository.findByRegion(region);
+    public Airport createAirport(Airport airport) {
+        return airportRepository.save(airport);
     }
 
     @Override
@@ -58,5 +56,40 @@ public class AirportServiceImpl implements AirportService {
         }
     }
 
+    @Override
+    public Airport setAirportActive(Integer id, Boolean isActive) {
+        Optional<Airport> airportOptional = airportRepository.findById(id);
+        if (airportOptional.isPresent()) {
+            Airport airport = airportOptional.get();
+            if (airport.getIsActive() == isActive) {
+                return airport;
+            }
+            List<Flight> flights = flightRepository.findFlightsInUseByAirportId(id);
+            if (flights != null && !flights.isEmpty()) {
+                throw new ConflictException("Airport in use with id: " + id);
+            }
+            airport.setIsActive(isActive);
+            return airportRepository.save(airport);
+        } else {
+            throw new ResourceNotFoundException("Airport not found!");
+        }
+    }
+
+    @Override
+    public void deleteAirportById(Integer id) {
+        Optional<Airport> airportOptional = airportRepository.findById(id);
+        if (airportOptional.isPresent()) {
+            Airport airport = airportOptional.get();
+
+            if (airport.getDepartureFlights().isEmpty() && airport.getArrivalFlights().isEmpty()) {
+                airportRepository.deleteById(id);
+            } else {
+                throw new ConflictException("Airport in use!");
+            }
+
+        } else {
+            throw new ResourceNotFoundException("Airport not found with id: " + id);
+        }
+    }
 
 }
