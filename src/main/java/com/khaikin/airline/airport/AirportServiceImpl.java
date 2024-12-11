@@ -50,6 +50,19 @@ public class AirportServiceImpl implements AirportService {
             airport.setName(updateAirport.getName());
             airport.setRegion(updateAirport.getRegion());
             airport.setCity(updateAirport.getCity());
+
+            Boolean isActive = updateAirport.getIsActive();
+            if (airport.getIsActive() == isActive) {
+                return airport;
+            }
+            if (!isActive) {
+                List<Flight> flights = flightRepository.findFlightsInUseByAirportId(id);
+                if (flights != null && !flights.isEmpty()) {
+                    throw new ConflictException("Airport in use with id: " + id);
+                }
+            }
+            airport.setIsActive(isActive);
+
             return airportRepository.save(airport);
         } else {
             throw new ResourceNotFoundException("Airport not found!");
@@ -64,9 +77,11 @@ public class AirportServiceImpl implements AirportService {
             if (airport.getIsActive() == isActive) {
                 return airport;
             }
-            List<Flight> flights = flightRepository.findFlightsInUseByAirportId(id);
-            if (flights != null && !flights.isEmpty()) {
-                throw new ConflictException("Airport in use with id: " + id);
+            if (!isActive) {
+                List<Flight> flights = flightRepository.findFlightsInUseByAirportId(id);
+                if (flights != null && !flights.isEmpty()) {
+                    throw new ConflictException("Airport in use with id: " + id);
+                }
             }
             airport.setIsActive(isActive);
             return airportRepository.save(airport);

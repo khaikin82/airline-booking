@@ -47,6 +47,19 @@ public class AirplaneServiceImpl implements AirplaneService {
             airplane.setManufacturer(updateAirplane.getManufacturer());
             airplane.setEconomySeatNumber(updateAirplane.getEconomySeatNumber());
             airplane.setBusinessSeatNumber(updateAirplane.getBusinessSeatNumber());
+
+            Boolean isActive = updateAirplane.getIsActive();
+            if (airplane.getIsActive() == isActive) {
+                return airplane;
+            }
+            if (!isActive) {
+                List<Flight> flights = flightRepository.findFlightsInUseByAirplaneId(id);
+                if (flights != null && !flights.isEmpty()) {
+                    throw new ConflictException("Airplane in use with id: " + id);
+                }
+            }
+            airplane.setIsActive(isActive);
+
             return airplaneRepository.save(airplane);
         } else {
             throw new ResourceNotFoundException("Airplane not found with id: " + id);
@@ -61,9 +74,11 @@ public class AirplaneServiceImpl implements AirplaneService {
             if (airplane.getIsActive() == isActive) {
                 return airplane;
             }
-            List<Flight> flights = flightRepository.findFlightsInUseByAirplaneId(id);
-            if (flights != null && !flights.isEmpty()) {
-                throw new ConflictException("Airplane in use with id: " + id);
+            if (!isActive) {
+                List<Flight> flights = flightRepository.findFlightsInUseByAirplaneId(id);
+                if (flights != null && !flights.isEmpty()) {
+                    throw new ConflictException("Airplane in use with id: " + id);
+                }
             }
             airplane.setIsActive(isActive);
             return airplaneRepository.save(airplane);
