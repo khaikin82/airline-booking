@@ -1,6 +1,5 @@
 package com.khaikin.airline.flight;
 
-import com.khaikin.airline.airplane.AirplaneRepository;
 import com.khaikin.airline.exception.ResourceNotFoundException;
 import com.khaikin.airline.flight.dto.FindFlightRequest;
 import com.khaikin.airline.flight.dto.FlightDto;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
-    private final AirplaneRepository airplaneRepository;
     private final ModelMapper modelMapper;
 
 
@@ -97,7 +95,7 @@ public class FlightServiceImpl implements FlightService {
     public void deleteFlightById(Integer id) {
         Optional<Flight> flightOptional = flightRepository.findById(id);
         if (flightOptional.isPresent()) {
-            airplaneRepository.deleteById(id);
+            flightRepository.deleteById(id);
         } else {
             throw new ResourceNotFoundException("Flight not found with id: " + id);
         }
