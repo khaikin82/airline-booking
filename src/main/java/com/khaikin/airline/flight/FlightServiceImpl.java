@@ -97,7 +97,7 @@ public class FlightServiceImpl implements FlightService {
     public void deleteFlightById(Integer id) {
         Optional<Flight> flightOptional = flightRepository.findById(id);
         if (flightOptional.isPresent()) {
-            airplaneRepository.deleteById(id);
+            flightRepository.deleteById(id);
         } else {
             throw new ResourceNotFoundException("Flight not found with id: " + id);
         }
