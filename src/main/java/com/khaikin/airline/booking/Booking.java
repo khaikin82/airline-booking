@@ -1,6 +1,5 @@
 package com.khaikin.airline.booking;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.khaikin.airline.flight.Flight;
 import com.khaikin.airline.passenger.Passenger;
@@ -29,6 +28,9 @@ public class Booking {
     private String email;
     private String phoneNumber;
 
+    private String seatType;
+    private Long price;
+
     @Enumerated(EnumType.STRING)
     private BookingStatus bookingStatus = BookingStatus.PENDING;
 
@@ -38,7 +40,6 @@ public class Booking {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @JsonBackReference("booking")
     @ManyToOne
     @JoinColumn(name = "flight_id")
     private Flight flight;
@@ -60,4 +61,21 @@ public class Booking {
         this.passengers = passengers;
     }
 
+    public Booking(String email, String phoneNumber, Flight flight, String seatType, Long price) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.flight = flight;
+        this.seatType = seatType;
+        this.price = price;
+    }
+
+    public Booking(String email, String phoneNumber, Flight flight, String seatType, Long price,
+                   List<Passenger> passengers) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.flight = flight;
+        this.seatType = seatType;
+        this.price = price;
+        this.passengers = passengers;
+    }
 }

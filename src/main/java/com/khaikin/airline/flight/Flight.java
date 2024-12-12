@@ -1,7 +1,6 @@
 package com.khaikin.airline.flight;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khaikin.airline.airplane.Airplane;
 import com.khaikin.airline.airport.Airport;
 import com.khaikin.airline.booking.Booking;
@@ -36,23 +35,19 @@ public class Flight {
     private Integer economySeatBookedNumber = 0;
     private Integer businessSeatBookedNumber = 0;
 
-    @JsonBackReference("airplane")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "airplane_id")
     private Airplane airplane;
 
-
-    @JsonBackReference("departure")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "departure_airport_id")
     private Airport departureAirport;
 
-    @JsonBackReference("arrival")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "arrival_airport_id")
     private Airport arrivalAirport;
 
-    @JsonManagedReference("booking")
+    @JsonIgnore
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 

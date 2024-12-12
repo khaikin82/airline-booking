@@ -1,13 +1,11 @@
 package com.khaikin.airline.flight.dto;
 
-import com.khaikin.airline.airplane.AirplaneDto;
-import com.khaikin.airline.airport.AirportDto;
-import com.khaikin.airline.booking.BookingDto;
+import com.khaikin.airline.airplane.Airplane;
+import com.khaikin.airline.airport.Airport;
 import com.khaikin.airline.flight.FlightStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 public class FlightDto {
@@ -24,8 +22,7 @@ public class FlightDto {
     private Integer businessSeatBookedNumber;
 
 
-    private AirplaneDto airplane;
-    private AirportDto departureAirport;
-    private AirportDto arrivalAirport;
-    private List<BookingDto> bookings;
+    private Airplane airplane;
+    private Airport departureAirport;
+    private Airport arrivalAirport;
 }

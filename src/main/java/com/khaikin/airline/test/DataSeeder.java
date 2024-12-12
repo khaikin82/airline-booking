@@ -166,22 +166,22 @@ public class DataSeeder implements CommandLineRunner {
 
         // booking
         List<Booking> bookings = new ArrayList<>();
-        bookings.add(new Booking("khaihd@gmail.com", "0981234561", flights.get(0)));
-        bookings.add(new Booking("user1@gmail.com", "0982345672", flights.get(0)));
-        bookings.add(new Booking("user2@gmail.com", "0983456783", flights.get(0)));
-        bookings.add(new Booking("user3@gmail.com", "0984567894", flights.get(1)));
-        bookings.add(new Booking("user4@gmail.com", "0985678905", flights.get(1)));
-        bookings.add(new Booking("user5@gmail.com", "0986789016", flights.get(2)));
-        bookings.add(new Booking("user6@gmail.com", "0987890127", flights.get(3)));
-        bookings.add(new Booking("user7@gmail.com", "0988901238", flights.get(3)));
-        bookings.add(new Booking("user8@gmail.com", "0989012349", flights.get(3)));
-        bookings.add(new Booking("user9@gmail.com", "0980123450", flights.get(3)));
-        bookings.add(new Booking("user10@gmail.com", "0981234560", flights.get(4)));
-        bookings.add(new Booking("user11@gmail.com", "0982345671", flights.get(5)));
-        bookings.add(new Booking("user12@gmail.com", "0983456782", flights.get(6)));
-        bookings.add(new Booking("user13@gmail.com", "0984567893", flights.get(6)));
-        bookings.add(new Booking("user14@gmail.com", "0985678904", flights.get(7)));
-        bookings.add(new Booking("user15@gmail.com", "0986789015", flights.get(8)));
+        bookings.add(new Booking("khaihd@gmail.com", "0981234561", flights.get(0), "Economy", 20000L));
+        bookings.add(new Booking("user1@gmail.com", "0982345672", flights.get(0), "Business", 40000L));
+        bookings.add(new Booking("user2@gmail.com", "0983456783", flights.get(0), "Economy", 8000L));
+        bookings.add(new Booking("user3@gmail.com", "0984567894", flights.get(1), "Economy", 1000L));
+        bookings.add(new Booking("user4@gmail.com", "0985678905", flights.get(1), "Economy", 20000L));
+        bookings.add(new Booking("user5@gmail.com", "0986789016", flights.get(2), "Business", 40000L));
+        bookings.add(new Booking("user6@gmail.com", "0987890127", flights.get(3), "Business", 50000L));
+        bookings.add(new Booking("user7@gmail.com", "0988901238", flights.get(3), "Business", 60000L));
+        bookings.add(new Booking("user8@gmail.com", "0989012349", flights.get(3), "Business", 80000L));
+        bookings.add(new Booking("user9@gmail.com", "0980123450", flights.get(3), "Economy", 10000L));
+        bookings.add(new Booking("user10@gmail.com", "0981234560", flights.get(4), "Economy", 5000L));
+        bookings.add(new Booking("user11@gmail.com", "0982345671", flights.get(5), "Economy", 2000L));
+        bookings.add(new Booking("user12@gmail.com", "0983456782", flights.get(6), "Economy", 1000L));
+        bookings.add(new Booking("user13@gmail.com", "0984567893", flights.get(6), "Economy", 7000L));
+        bookings.add(new Booking("user14@gmail.com", "0985678904", flights.get(7), "Business", 12000L));
+        bookings.add(new Booking("user15@gmail.com", "0986789015", flights.get(8), "Business", 10000L));
 
 //        List<Passenger> passengers1 = new ArrayList<>();
 //        passengers1.add(new Passenger(PassengerTitle.MR, "Khai", "Hoang", PassengerType.ADULT, "2004-09-08"));

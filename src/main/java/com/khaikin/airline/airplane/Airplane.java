@@ -1,6 +1,6 @@
 package com.khaikin.airline.airplane;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khaikin.airline.flight.Flight;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,7 @@ public class Airplane {
 
     private Boolean isActive = true;
 
-    @JsonManagedReference("airplane")
+    @JsonIgnore
     @OneToMany(mappedBy = "airplane", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Flight> flights = new ArrayList<>();
 
@@ -42,5 +42,16 @@ public class Airplane {
         this.manufacturer = manufacturer;
         this.economySeatNumber = economySeatNumber;
         this.businessSeatNumber = businessSeatNumber;
+    }
+
+    public Airplane(String code, String model, String manufacturer, Integer economySeatNumber,
+                    Integer businessSeatNumber,
+                    Boolean isActive) {
+        this.code = code;
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.economySeatNumber = economySeatNumber;
+        this.businessSeatNumber = businessSeatNumber;
+        this.isActive = isActive;
     }
 }

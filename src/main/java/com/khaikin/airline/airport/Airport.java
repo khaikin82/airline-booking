@@ -1,6 +1,6 @@
 package com.khaikin.airline.airport;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khaikin.airline.flight.Flight;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,12 +29,12 @@ public class Airport {
 
     private Boolean isActive = true;
 
-    @JsonManagedReference("departure")
+    @JsonIgnore
     @OneToMany(mappedBy = "departureAirport")
     private List<Flight> departureFlights;
 
 
-    @JsonManagedReference("arrival")
+    @JsonIgnore
     @OneToMany(mappedBy = "arrivalAirport")
     private List<Flight> arrivalFlights;
 
@@ -45,4 +45,11 @@ public class Airport {
         this.city = city;
     }
 
+    public Airport(String name, String code, String region, String city, Boolean isActive) {
+        this.name = name;
+        this.code = code;
+        this.region = region;
+        this.city = city;
+        this.isActive = isActive;
+    }
 }
