@@ -56,7 +56,7 @@ public class BookingServiceImpl implements BookingService {
             booking.setEmail(updateBooking.getEmail());
             booking.setPhoneNumber(updateBooking.getPhoneNumber());
             booking.setFlight(updateBooking.getFlight());
-            booking.setSeatType(updateBooking.getSeatType());
+            booking.setSeatClass(updateBooking.getSeatClass());
             booking.setPrice(updateBooking.getPrice());
             booking.setPassengers(updateBooking.getPassengers());
             booking.setBookingStatus(updateBooking.getBookingStatus());

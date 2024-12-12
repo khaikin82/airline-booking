@@ -28,7 +28,7 @@ public class Booking {
     private String email;
     private String phoneNumber;
 
-    private String seatType;
+    private String seatClass;
     private Long price;
 
     @Enumerated(EnumType.STRING)
@@ -65,7 +65,7 @@ public class Booking {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.flight = flight;
-        this.seatType = seatType;
+        this.seatClass = seatType;
         this.price = price;
     }
 
@@ -74,7 +74,7 @@ public class Booking {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.flight = flight;
-        this.seatType = seatType;
+        this.seatClass = seatType;
         this.price = price;
         this.passengers = passengers;
     }
