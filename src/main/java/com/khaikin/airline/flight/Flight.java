@@ -52,12 +52,14 @@ public class Flight {
     private List<Booking> bookings;
 
     public Flight(LocalDateTime departureTime, String flightNumber, LocalDateTime arrivalTime,
-                  FlightStatus flightStatus,
+                  FlightStatus flightStatus, Long economyPrice, Long businessPrice,
                   Airplane airplane, Airport departureAirport, Airport arrivalAirport) {
         this.departureTime = departureTime;
         this.flightNumber = flightNumber;
         this.arrivalTime = arrivalTime;
         this.flightStatus = flightStatus;
+        this.economyPrice = economyPrice;
+        this.businessPrice = businessPrice;
         this.airplane = airplane;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
