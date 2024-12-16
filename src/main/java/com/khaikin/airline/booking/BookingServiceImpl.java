@@ -81,7 +81,7 @@ public class BookingServiceImpl implements BookingService {
             booking.setBookingStatus(updateBooking.getBookingStatus());
             booking.setUser(updateBooking.getUser());
 
-            booking.setPassengers(updateBooking.getPassengers());
+//            booking.setPassengers(updateBooking.getPassengers());
 
             booking.setIsRoundTrip(updateBooking.getIsRoundTrip());
 
