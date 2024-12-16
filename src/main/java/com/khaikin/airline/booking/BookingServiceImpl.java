@@ -1,6 +1,8 @@
 package com.khaikin.airline.booking;
 
 import com.khaikin.airline.exception.ResourceNotFoundException;
+import com.khaikin.airline.flight.FlightRepository;
+import com.khaikin.airline.flight.FlightService;
 import com.khaikin.airline.passenger.PassengerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
     private final PassengerRepository passengerRepository;
+    private final FlightRepository flightRepository;
+    private final FlightService flightService;
 
     @Override
     public List<Booking> getAllBookings() {
@@ -34,6 +38,9 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking createBooking(Booking booking) {
         booking.setReservationTime(LocalDateTime.now());
+        if (!booking.getIsRoundTrip()) {
+            booking.setReturnFlight(null);
+        }
         Booking savedBooking = booking;
         while (true) {
             try {
@@ -45,6 +52,8 @@ public class BookingServiceImpl implements BookingService {
             }
         }
 
+        updateSeatBookedNumber(savedBooking);
+
         return savedBooking;
     }
 
@@ -53,15 +62,48 @@ public class BookingServiceImpl implements BookingService {
         Optional<Booking> bookingOptional = bookingRepository.findById(id);
         if (bookingOptional.isPresent()) {
             Booking booking = bookingOptional.get();
+
+            Integer flightId = booking.getFlight().getId();
+            String seatClass = booking.getSeatClass();
+            Integer returnFlightId = null;
+            String returnSeatClass = null;
+
+            if (booking.getIsRoundTrip() && booking.getReturnFlight() != null) {
+                returnFlightId = booking.getReturnFlight().getId();
+                returnSeatClass = booking.getReturnSeatClass();
+            }
+
             booking.setEmail(updateBooking.getEmail());
             booking.setPhoneNumber(updateBooking.getPhoneNumber());
             booking.setFlight(updateBooking.getFlight());
             booking.setSeatClass(updateBooking.getSeatClass());
             booking.setPrice(updateBooking.getPrice());
-            booking.setPassengers(updateBooking.getPassengers());
             booking.setBookingStatus(updateBooking.getBookingStatus());
             booking.setUser(updateBooking.getUser());
-            return bookingRepository.save(booking);
+
+            booking.setPassengers(updateBooking.getPassengers());
+
+            booking.setIsRoundTrip(updateBooking.getIsRoundTrip());
+
+            if (!booking.getIsRoundTrip()) {
+                booking.setReturnFlight(null);
+            } else {
+                booking.setReturnSeatClass(updateBooking.getReturnSeatClass());
+                booking.setReturnFlight(updateBooking.getReturnFlight());
+            }
+
+            Booking savedBooking = bookingRepository.save(booking);
+
+
+            Integer count = bookingRepository.countSeatBookedNumber(flightId, seatClass);
+            flightService.updateSeatBookedNumber(flightId, seatClass, count);
+            if (returnFlightId != null && returnSeatClass != null) {
+                Integer returnCount = bookingRepository.countSeatBookedNumber(returnFlightId, returnSeatClass);
+                flightService.updateSeatBookedNumber(returnFlightId, returnSeatClass, returnCount);
+            }
+
+            updateSeatBookedNumber(savedBooking);
+            return savedBooking;
         } else {
             throw new ResourceNotFoundException("Booking not found");
         }
@@ -81,9 +123,29 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void deleteBookingById(Integer id) {
-        Optional<Booking> booking = bookingRepository.findById(id);
-        if (booking.isPresent()) {
+        Optional<Booking> bookingOptional = bookingRepository.findById(id);
+        if (bookingOptional.isPresent()) {
+            Booking booking = bookingOptional.get();
+
+            Integer flightId = booking.getFlight().getId();
+            String seatClass = booking.getSeatClass();
+            Integer returnFlightId = null;
+            String returnSeatClass = null;
+
+            if (booking.getIsRoundTrip() && booking.getReturnFlight() != null) {
+                returnFlightId = booking.getReturnFlight().getId();
+                returnSeatClass = booking.getReturnSeatClass();
+            }
+
             bookingRepository.deleteById(id);
+
+            Integer count = bookingRepository.countSeatBookedNumber(flightId, seatClass);
+            flightService.updateSeatBookedNumber(flightId, seatClass, count);
+
+            if (returnFlightId != null && returnSeatClass != null) {
+                Integer returnCount = bookingRepository.countSeatBookedNumber(returnFlightId, returnSeatClass);
+                flightService.updateSeatBookedNumber(returnFlightId, returnSeatClass, returnCount);
+            }
         } else {
             throw new ResourceNotFoundException("Booking not found with id: " + id);
         }
@@ -98,5 +160,19 @@ public class BookingServiceImpl implements BookingService {
             sb.append(CHARACTERS.charAt(index));
         }
         return sb.toString();
+    }
+
+    private void updateSeatBookedNumber(Booking booking) {
+        Integer flightId = booking.getFlight().getId();
+        String seatClass = booking.getSeatClass();
+        Integer count = bookingRepository.countSeatBookedNumber(flightId, seatClass);
+        flightService.updateSeatBookedNumber(flightId, seatClass, count);
+
+        if (booking.getIsRoundTrip() && booking.getReturnFlight() != null) {
+            Integer returnFlightId = booking.getReturnFlight().getId();
+            String returnSeatClass = booking.getReturnSeatClass();
+            Integer returnCount = bookingRepository.countSeatBookedNumber(returnFlightId, returnSeatClass);
+            flightService.updateSeatBookedNumber(returnFlightId, returnSeatClass, returnCount);
+        }
     }
 }

@@ -100,4 +100,22 @@ public class FlightServiceImpl implements FlightService {
             throw new ResourceNotFoundException("Flight not found with id: " + id);
         }
     }
+
+    @Override
+    public void updateSeatBookedNumber(Integer id, String seatClass, Integer count) {
+        Optional<Flight> flightOptional = flightRepository.findById(id);
+        if (flightOptional.isPresent()) {
+            Flight flight = flightOptional.get();
+
+            if (seatClass.equals("Economy")) {
+                flight.setEconomySeatBookedNumber(count);
+            } else if (seatClass.equals("Business")) {
+                flight.setBusinessSeatBookedNumber(count);
+            }
+
+            flightRepository.save(flight);
+        } else {
+            throw new ResourceNotFoundException("Flight not found with id: " + id);
+        }
+    }
 }

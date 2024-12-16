@@ -29,7 +29,11 @@ public class Booking {
     private String phoneNumber;
 
     private String seatClass;
+    private String returnSeatClass;
+
     private Long price;
+
+    private Boolean isRoundTrip = false;
 
     @Enumerated(EnumType.STRING)
     private BookingStatus bookingStatus = BookingStatus.PENDING;
@@ -43,6 +47,10 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "flight_id")
     private Flight flight;
+
+    @ManyToOne
+    @JoinColumn(name = "return_flight_id")
+    private Flight returnFlight;
 
     @JsonManagedReference("passenger")
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)

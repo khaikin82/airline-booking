@@ -13,12 +13,14 @@ public interface FlightService {
 
     public FlightDto createFlight(Flight flight);
 
-
     public List<FlightDto> findAppropriateFlight(FindFlightRequest findFlightRequest);
 
     public FlightDto updateFlight(Integer id, Flight updateFlight);
 
     public void deleteFlightById(Integer id);
+
+    public void updateSeatBookedNumber(Integer id, String seatClass, Integer count);
+
 
 }
 
