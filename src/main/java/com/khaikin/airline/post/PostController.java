@@ -25,16 +25,6 @@ public class PostController {
         return postService.getPostById(id);
     }
 
-    @PostMapping
-    public ResponseEntity<?> createPost(@RequestPart Post post, @RequestPart MultipartFile imageFile) {
-        try {
-            Post newPost = postService.createPost(post, imageFile);
-            return new ResponseEntity<>(newPost, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping("/types/{typeName}")
     public List<Post> getPostsByType(@PathVariable String typeName) {
         return postService.getPostsByType(typeName);
@@ -47,6 +37,17 @@ public class PostController {
 
         return ResponseEntity.ok().contentType(MediaType.valueOf(post.getImageType())).body(imageFile);
     }
+
+    @PostMapping
+    public ResponseEntity<?> createPost(@RequestPart Post post, @RequestPart MultipartFile imageFile) {
+        try {
+            Post newPost = postService.createPost(post, imageFile);
+            return new ResponseEntity<>(newPost, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePostById(@PathVariable Integer id) {
