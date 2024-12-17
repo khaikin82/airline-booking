@@ -1,5 +1,5 @@
 package com.khaikin.airline.passenger;
 
 public enum PassengerTitle {
-    MR, MRS, MS, DOCTOR, PROFESSOR
+    MR, MRS, MS, DOCTOR, PROFESSOR, BOY, GIRL
 }

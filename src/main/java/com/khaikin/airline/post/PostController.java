@@ -35,12 +35,6 @@ public class PostController {
         }
     }
 
-//    @PostMapping
-//    public ResponseEntity<Post> createPost(@RequestBody Post post) {
-//        Post newPost = postService.createPost(post);
-//        return ResponseEntity.ok(newPost);
-//    }
-
     @GetMapping("/types/{typeName}")
     public List<Post> getPostsByType(@PathVariable String typeName) {
         return postService.getPostsByType(typeName);

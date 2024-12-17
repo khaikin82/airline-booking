@@ -15,11 +15,15 @@ import com.khaikin.airline.passenger.Passenger;
 import com.khaikin.airline.passenger.PassengerService;
 import com.khaikin.airline.passenger.PassengerTitle;
 import com.khaikin.airline.passenger.PassengerType;
+import com.khaikin.airline.post.Post;
+import com.khaikin.airline.post.PostService;
 import com.khaikin.airline.user.Role;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +37,7 @@ public class DataSeeder implements CommandLineRunner {
     private final BookingService bookingService;
     private final PassengerService passengerService;
     private final AuthenticationService authenticationService;
+    private final PostService postService;
 
     @Override
     public void run(String... args)
@@ -265,6 +270,57 @@ public class DataSeeder implements CommandLineRunner {
 
         for (RegisterRequest request : registerRequests) {
             authenticationService.register(request);
+        }
+
+
+        // post
+
+        String filePath =
+                "src/main/java/com/khaikin/airline/test/gintoki.jpg";
+        String filePath1 =
+                "src/main/java/com/khaikin/airline/test/gintoki_01.jpg";
+        String filePath2 =
+                "src/main/java/com/khaikin/airline/test/gintoki_02.jpg";
+
+        byte[] imageData = Files.readAllBytes(Paths.get(filePath));
+        byte[] imageData1 = Files.readAllBytes(Paths.get(filePath1));
+        byte[] imageData2 = Files.readAllBytes(Paths.get(filePath2));
+
+        List<Post> posts = List.of(new Post[]{
+                new Post("news", "Tin tức hôm nay",
+                         "Hôm nay có rất nhiều tin tức quan trọng trong ngành công nghệ.",
+                         "news1.jpg", "image/jpeg", imageData),
+
+                new Post("news", "Cập nhật mới nhất về sản phẩm",
+                         "Chúng tôi vừa ra mắt một dòng sản phẩm mới, hãy cùng tìm hiểu.",
+                         "news2.jpg", "image/jpeg", imageData1),
+
+                new Post("discount", "Khuyến mãi cuối năm",
+                         "Giảm giá lên đến 50% cho tất cả các sản phẩm trong tháng 12.",
+                         "discount1.jpg", "image/jpeg", imageData2),
+
+                new Post("discount", "Flash Sale hôm nay",
+                         "Mua 1 tặng 1 trong ngày hôm nay cho các sản phẩm chọn lọc.",
+                         "discount2.jpg", "image/jpeg", imageData1),
+
+                new Post("news", "Thị trường chứng khoán 2024",
+                         "Tình hình chứng khoán hiện tại có những dấu hiệu tích cực trong những ngày qua.",
+                         "news3.jpg", "image/jpeg", imageData2),
+
+                new Post("news", "Sự kiện thể thao sắp tới",
+                         "Một sự kiện thể thao lớn sẽ diễn ra vào cuối tuần này, đừng bỏ lỡ.",
+                         "news4.jpg", "image/jpeg", imageData),
+
+                new Post("event", "Tổ chức sự kiện sắp tới",
+                         "Đừng quên tham gia sự kiện lớn vào cuối tháng này với nhiều hoạt động hấp dẫn.",
+                         "event1.jpg", "image/jpeg", imageData2),
+
+                new Post("event", "Chương trình hội thảo chuyên đề",
+                         "Chúng tôi sẽ tổ chức một hội thảo chuyên đề vào cuối tuần này. Đăng ký ngay.",
+                         "event2.jpg", "image/jpeg", imageData1)
+        });
+        for (Post post : posts) {
+            postService.createPost(post);
         }
     }
 }
