@@ -195,12 +195,12 @@ public class DataSeeder implements CommandLineRunner {
         passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Sarah", "Davis", PassengerType.ADULT, "1965-07-22",
                                      bookings.get(1)));
 
-        passengers.add(new Passenger(PassengerTitle.MR, "James", "Wilson", PassengerType.CHILD, "2010-03-10",
+        passengers.add(new Passenger(PassengerTitle.BOY, "James", "Wilson", PassengerType.CHILD, "2010-03-10",
                                      bookings.get(2)));
         passengers.add(new Passenger(PassengerTitle.MS, "Olivia", "Martinez", PassengerType.CHILD, "2012-04-18",
                                      bookings.get(3)));
 
-        passengers.add(new Passenger(PassengerTitle.MRS, "Sophia", "Garcia", PassengerType.INFANT, "2021-06-05",
+        passengers.add(new Passenger(PassengerTitle.GIRL, "Sophia", "Garcia", PassengerType.INFANT, "2021-06-05",
                                      bookings.get(3)));
         passengers.add(new Passenger(PassengerTitle.DOCTOR, "David", "Anderson", PassengerType.ADULT, "1980-02-14",
                                      bookings.get(3)));
@@ -220,8 +220,9 @@ public class DataSeeder implements CommandLineRunner {
                                      bookings.get(8)));
 
         passengers.add(
-                new Passenger(PassengerTitle.MR, "Henry", "Baker", PassengerType.CHILD, "2011-02-22", bookings.get(6)));
-        passengers.add(new Passenger(PassengerTitle.MS, "Charlotte", "Wright", PassengerType.CHILD, "2013-05-05",
+                new Passenger(PassengerTitle.GIRL, "Henry", "Baker", PassengerType.CHILD, "2011-02-22",
+                              bookings.get(6)));
+        passengers.add(new Passenger(PassengerTitle.BOY, "Charlotte", "Wright", PassengerType.CHILD, "2013-05-05",
                                      bookings.get(8)));
         passengers.add(
                 new Passenger(PassengerTitle.MRS, "Mia", "Green", PassengerType.INFANT, "2020-09-15", bookings.get(6)));
@@ -242,12 +243,13 @@ public class DataSeeder implements CommandLineRunner {
 
         passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Harper", "Mitchell", PassengerType.ADULT, "1967-02-05",
                                      bookings.get(13)));
-        passengers.add(new Passenger(PassengerTitle.MR, "Landon", "Roberts", PassengerType.CHILD, "2011-06-30",
+        passengers.add(new Passenger(PassengerTitle.BOY, "Landon", "Roberts", PassengerType.CHILD, "2011-06-30",
                                      bookings.get(14)));
         passengers.add(
-                new Passenger(PassengerTitle.MS, "Ella", "Parker", PassengerType.CHILD, "2013-07-20", bookings.get(9)));
+                new Passenger(PassengerTitle.GIRL, "Ella", "Parker", PassengerType.CHILD, "2013-07-20",
+                              bookings.get(9)));
 
-        passengers.add(new Passenger(PassengerTitle.MRS, "Abigail", "Evans", PassengerType.INFANT, "2022-01-01",
+        passengers.add(new Passenger(PassengerTitle.BOY, "Abigail", "Evans", PassengerType.INFANT, "2022-01-01",
                                      bookings.get(14)));
         passengers.add(new Passenger(PassengerTitle.DOCTOR, "Aiden", "Turner", PassengerType.ADULT, "1977-04-15",
                                      bookings.get(15)));
