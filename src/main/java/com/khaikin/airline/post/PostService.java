@@ -17,5 +17,8 @@ public interface PostService {
     public Post createPost(Post post, MultipartFile imageFile)
             throws IOException;
 
+    public Post updatePost(Integer id, Post updatePost, MultipartFile updateImageFile)
+            throws IOException;
+
     public void deletePostById(Integer id);
 }

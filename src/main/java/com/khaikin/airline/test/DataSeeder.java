@@ -102,42 +102,42 @@ public class DataSeeder implements CommandLineRunner {
         flights.add(new Flight(LocalDateTime.of(2024, 11, 8, 6, 0), "VN125", LocalDateTime.of(2024, 11, 8, 8, 0),
                                FlightStatus.ARRIVED, 2200L, 5000L, airplanes.get(8), airports.get(15),
                                airports.get(16)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 4, 10, 0), "VN456", LocalDateTime.of(2024, 12, 4, 15, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 20, 20, 0), "VN456", LocalDateTime.of(2024, 12, 20, 22, 0),
                                FlightStatus.IN_AIR, 2800L, 5900L, airplanes.get(1), airports.get(0), airports.get(5)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 6, 14, 0), "VN789", LocalDateTime.of(2024, 12, 6, 16, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 21, 14, 0), "VN789", LocalDateTime.of(2024, 12, 21, 16, 0),
                                FlightStatus.SCHEDULED, 2300L, 5400L, airplanes.get(2), airports.get(1),
                                airports.get(0)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 6, 15, 0), "VN101", LocalDateTime.of(2024, 12, 6, 20, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 21, 15, 0), "VN101", LocalDateTime.of(2024, 12, 21, 20, 0),
                                FlightStatus.SCHEDULED, 2100L, 5200L, airplanes.get(0), airports.get(5),
                                airports.get(10)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 8, 22, 0), "VN102", LocalDateTime.of(2024, 12, 9, 0, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 22, 22, 0), "VN102", LocalDateTime.of(2024, 12, 23, 1, 0),
                                FlightStatus.CANCELLED, 3000L, 6400L, airplanes.get(3), airports.get(7),
                                airports.get(0)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 9, 1, 0), "VN103", LocalDateTime.of(2024, 12, 9, 3, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 22, 1, 0), "VN103", LocalDateTime.of(2024, 12, 22, 3, 0),
                                FlightStatus.SCHEDULED, 2500L, 5700L, airplanes.get(4), airports.get(0),
                                airports.get(2)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 10, 5, 0), "VN104", LocalDateTime.of(2024, 12, 10, 7, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 23, 5, 0), "VN104", LocalDateTime.of(2024, 12, 23, 7, 0),
                                FlightStatus.SCHEDULED, 2900L, 6200L, airplanes.get(0), airports.get(1),
                                airports.get(0)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 11, 9, 0), "VN105", LocalDateTime.of(2024, 12, 11, 11, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 23, 9, 0), "VN105", LocalDateTime.of(2024, 12, 23, 11, 0),
                                FlightStatus.SCHEDULED, 2600L, 6000L, airplanes.get(5), airports.get(0),
                                airports.get(1)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 12, 13, 0), "VN106", LocalDateTime.of(2024, 12, 12, 15, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 24, 13, 0), "VN106", LocalDateTime.of(2024, 12, 24, 15, 0),
                                FlightStatus.SCHEDULED, 2800L, 6500L, airplanes.get(2), airports.get(6),
                                airports.get(9)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 13, 17, 0), "VN107", LocalDateTime.of(2024, 12, 13, 19, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 24, 17, 0), "VN107", LocalDateTime.of(2024, 12, 24, 19, 0),
                                FlightStatus.SCHEDULED, 2200L, 5300L, airplanes.get(3), airports.get(8),
                                airports.get(5)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 14, 17, 0), "VN108", LocalDateTime.of(2024, 12, 14, 19, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 24, 17, 0), "VN108", LocalDateTime.of(2024, 12, 24, 19, 0),
                                FlightStatus.SCHEDULED, 2400L, 5600L, airplanes.get(4), airports.get(8),
                                airports.get(5)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 15, 17, 0), "VN109", LocalDateTime.of(2024, 12, 15, 19, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 24, 17, 0), "VN109", LocalDateTime.of(2024, 12, 24, 19, 0),
                                FlightStatus.SCHEDULED, 2100L, 5100L, airplanes.get(3), airports.get(5),
                                airports.get(8)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 20, 17, 0), "VN110", LocalDateTime.of(2024, 12, 20, 19, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 25, 17, 0), "VN110", LocalDateTime.of(2024, 12, 25, 19, 0),
                                FlightStatus.SCHEDULED, 2700L, 6300L, airplanes.get(3), airports.get(5),
                                airports.get(8)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 20, 9, 0), "VN111", LocalDateTime.of(2024, 12, 20, 12, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 26, 9, 0), "VN111", LocalDateTime.of(2024, 12, 25, 12, 0),
                                FlightStatus.SCHEDULED, 2200L, 5400L, airplanes.get(5), airports.get(1),
                                airports.get(0)));
 

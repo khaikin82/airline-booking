@@ -52,6 +52,25 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public Post updatePost(Integer id, Post updatePost, MultipartFile updateImageFile)
+            throws IOException {
+        Optional<Post> postOptional = postRepository.findById(id);
+        if (postOptional.isPresent()) {
+            Post post = postOptional.get();
+            post.setType(updatePost.getType());
+            post.setTitle(updatePost.getTitle());
+            post.setContent(updatePost.getContent());
+
+            post.setImageName(updateImageFile.getOriginalFilename());
+            post.setImageType(updateImageFile.getContentType());
+            post.setImageData(updateImageFile.getBytes());
+            return postRepository.save(post);
+        } else {
+            throw new ResourceNotFoundException("Post not found!");
+        }
+    }
+
+    @Override
     public void deletePostById(Integer id) {
         Optional<Post> postOptional = postRepository.findById(id);
         if (postOptional.isPresent()) {

@@ -41,6 +41,7 @@ public class BookingServiceImpl implements BookingService {
         if (!booking.getIsRoundTrip()) {
             booking.setReturnFlight(null);
         }
+//        if (booking.getFlight().getId()??
         Booking savedBooking = booking;
         while (true) {
             try {
