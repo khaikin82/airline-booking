@@ -1,5 +1,7 @@
 package com.khaikin.airline.post;
 
+import com.khaikin.airline.exception.ConflictException;
+import com.khaikin.airline.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,15 +41,28 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createPost(@RequestPart Post post, @RequestPart MultipartFile imageFile) {
+    public ResponseEntity<Post> createPost(@RequestPart Post post, @RequestPart MultipartFile imageFile) {
         try {
             Post newPost = postService.createPost(post, imageFile);
             return new ResponseEntity<>(newPost, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new ConflictException("Conflict Error: Create Post ");
         }
     }
-    
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Post> updatePost(@PathVariable Integer id, @RequestPart Post post,
+                                           @RequestPart MultipartFile imageFile) {
+        try {
+            Post newPost = postService.updatePost(id, post, imageFile);
+            return new ResponseEntity<>(newPost, HttpStatus.CREATED);
+        } catch (ResourceNotFoundException e) {
+            throw new ResourceNotFoundException(e.getMessage());
+        } catch (Exception e) {
+            throw new ConflictException("Conflict Error: Update post");
+        }
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePostById(@PathVariable Integer id) {

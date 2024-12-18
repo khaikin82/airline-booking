@@ -1,8 +1,10 @@
 package com.khaikin.airline.booking;
 
+import com.khaikin.airline.booking.dto.SearchBookingRequest;
 import com.khaikin.airline.exception.ResourceNotFoundException;
 import com.khaikin.airline.flight.FlightRepository;
 import com.khaikin.airline.flight.FlightService;
+import com.khaikin.airline.passenger.Passenger;
 import com.khaikin.airline.passenger.PassengerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -120,6 +122,23 @@ public class BookingServiceImpl implements BookingService {
         } else {
             throw new ResourceNotFoundException("Booking not found");
         }
+    }
+
+    @Override
+    public Booking searchBooking(SearchBookingRequest searchBookingRequest) {
+        Optional<Booking> bookingOptional = bookingRepository.findByCode(searchBookingRequest.getCode());
+        if (bookingOptional.isPresent()) {
+            Booking booking = bookingOptional.get();
+            boolean flag = false;
+            for (Passenger passenger : booking.getPassengers()) {
+                if (passenger.getLastname().equals(searchBookingRequest.getLastname())) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) return booking;
+        }
+        throw new ResourceNotFoundException("Booking not found");
     }
 
     @Override

@@ -1,5 +1,6 @@
-package com.khaikin.airline.booking;
+package com.khaikin.airline.booking.dto;
 
+import com.khaikin.airline.booking.BookingStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

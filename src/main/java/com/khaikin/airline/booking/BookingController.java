@@ -1,5 +1,6 @@
 package com.khaikin.airline.booking;
 
+import com.khaikin.airline.booking.dto.SearchBookingRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,11 @@ public class BookingController {
     @PostMapping
     public Booking createBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);
+    }
+
+    @PostMapping("/search")
+    public Booking searchBooking(@RequestBody SearchBookingRequest searchBookingRequest) {
+        return bookingService.searchBooking(searchBookingRequest);
     }
 
     @PutMapping("/{id}")
