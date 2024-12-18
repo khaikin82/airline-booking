@@ -105,17 +105,17 @@ public class DataSeeder implements CommandLineRunner {
         flights.add(new Flight(LocalDateTime.of(2024, 12, 20, 20, 0), "VN456", LocalDateTime.of(2024, 12, 20, 22, 0),
                                FlightStatus.IN_AIR, 2800L, 5900L, airplanes.get(1), airports.get(0), airports.get(5)));
         flights.add(new Flight(LocalDateTime.of(2024, 12, 21, 14, 0), "VN789", LocalDateTime.of(2024, 12, 21, 16, 0),
-                               FlightStatus.SCHEDULED, 2300L, 5400L, airplanes.get(2), airports.get(1),
-                               airports.get(0)));
+                               FlightStatus.SCHEDULED, 2300L, 5400L, airplanes.get(2), airports.get(0),
+                               airports.get(1)));
         flights.add(new Flight(LocalDateTime.of(2024, 12, 21, 15, 0), "VN101", LocalDateTime.of(2024, 12, 21, 20, 0),
-                               FlightStatus.SCHEDULED, 2100L, 5200L, airplanes.get(0), airports.get(5),
-                               airports.get(10)));
+                               FlightStatus.SCHEDULED, 2100L, 5200L, airplanes.get(0), airports.get(0),
+                               airports.get(1)));
         flights.add(new Flight(LocalDateTime.of(2024, 12, 22, 22, 0), "VN102", LocalDateTime.of(2024, 12, 23, 1, 0),
-                               FlightStatus.CANCELLED, 3000L, 6400L, airplanes.get(3), airports.get(7),
+                               FlightStatus.CANCELLED, 3000L, 6400L, airplanes.get(3), airports.get(1),
                                airports.get(0)));
         flights.add(new Flight(LocalDateTime.of(2024, 12, 22, 1, 0), "VN103", LocalDateTime.of(2024, 12, 22, 3, 0),
                                FlightStatus.SCHEDULED, 2500L, 5700L, airplanes.get(4), airports.get(0),
-                               airports.get(2)));
+                               airports.get(1)));
         flights.add(new Flight(LocalDateTime.of(2024, 12, 23, 5, 0), "VN104", LocalDateTime.of(2024, 12, 23, 7, 0),
                                FlightStatus.SCHEDULED, 2900L, 6200L, airplanes.get(0), airports.get(1),
                                airports.get(0)));
@@ -137,7 +137,7 @@ public class DataSeeder implements CommandLineRunner {
         flights.add(new Flight(LocalDateTime.of(2024, 12, 25, 17, 0), "VN110", LocalDateTime.of(2024, 12, 25, 19, 0),
                                FlightStatus.SCHEDULED, 2700L, 6300L, airplanes.get(3), airports.get(5),
                                airports.get(8)));
-        flights.add(new Flight(LocalDateTime.of(2024, 12, 26, 9, 0), "VN111", LocalDateTime.of(2024, 12, 25, 12, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 26, 9, 0), "VN111", LocalDateTime.of(2024, 12, 26, 12, 0),
                                FlightStatus.SCHEDULED, 2200L, 5400L, airplanes.get(5), airports.get(1),
                                airports.get(0)));
 
