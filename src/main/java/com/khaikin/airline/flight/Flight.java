@@ -30,8 +30,8 @@ public class Flight {
     @Enumerated(EnumType.STRING)
     private FlightStatus flightStatus;
 
-    private Long economyPrice;
-    private Long businessPrice;
+    private Integer economyPrice;
+    private Integer businessPrice;
     private Integer economySeatBookedNumber = 0;
     private Integer businessSeatBookedNumber = 0;
 
@@ -52,7 +52,7 @@ public class Flight {
     private List<Booking> bookings;
 
     public Flight(LocalDateTime departureTime, String flightNumber, LocalDateTime arrivalTime,
-                  FlightStatus flightStatus, Long economyPrice, Long businessPrice,
+                  FlightStatus flightStatus, Integer economyPrice, Integer businessPrice,
                   Airplane airplane, Airport departureAirport, Airport arrivalAirport) {
         this.departureTime = departureTime;
         this.flightNumber = flightNumber;

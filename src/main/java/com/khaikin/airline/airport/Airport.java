@@ -27,6 +27,9 @@ public class Airport {
     private String region;
     private String city;
 
+    private String description;
+    private String imageUrl;
+
     private Boolean isActive = true;
 
     @JsonIgnore
@@ -51,5 +54,22 @@ public class Airport {
         this.region = region;
         this.city = city;
         this.isActive = isActive;
+    }
+
+    public Airport(String name, String code, String region, String city, String description) {
+        this.name = name;
+        this.code = code;
+        this.region = region;
+        this.city = city;
+        this.description = description;
+    }
+
+    public Airport(String name, String code, String region, String city, String description, String imageUrl) {
+        this.name = name;
+        this.code = code;
+        this.region = region;
+        this.city = city;
+        this.description = description;
+        this.imageUrl = imageUrl;
     }
 }

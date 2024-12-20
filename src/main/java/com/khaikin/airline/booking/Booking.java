@@ -31,7 +31,7 @@ public class Booking {
     private String seatClass;
     private String returnSeatClass;
 
-    private Long price;
+    private Integer price;
 
     private Boolean isRoundTrip = false;
 
@@ -69,7 +69,7 @@ public class Booking {
         this.passengers = passengers;
     }
 
-    public Booking(String email, String phoneNumber, Flight flight, String seatType, Long price) {
+    public Booking(String email, String phoneNumber, Flight flight, String seatType, Integer price) {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.flight = flight;
@@ -77,7 +77,7 @@ public class Booking {
         this.price = price;
     }
 
-    public Booking(String email, String phoneNumber, Flight flight, String seatType, Long price,
+    public Booking(String email, String phoneNumber, Flight flight, String seatType, Integer price,
                    List<Passenger> passengers) {
         this.email = email;
         this.phoneNumber = phoneNumber;
