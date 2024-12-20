@@ -97,23 +97,23 @@ public class DataSeeder implements CommandLineRunner {
         airports.add(new Airport("Zurich", "ZRH", "Europe", "Zurich, Switzerland",
                                  "Zurich is Switzerland’s largest city, known for its stunning lakeside views, charming old town, and global financial center."));
 
-        airports.add(new Airport("Los Angeles International", "LAX", "North America", "Los Angeles, United States",
+        airports.add(new Airport("Los Angeles International", "LAX", "America", "Los Angeles, United States",
                                  "Los Angeles is the entertainment capital of the world, known for Hollywood, beaches, and year-round sunny weather."));
-        airports.add(new Airport("John F. Kennedy International", "JFK", "North America", "New York, United States",
+        airports.add(new Airport("John F. Kennedy International", "JFK", "America", "New York, United States",
                                  "New York City is known as 'The Big Apple', famous for its iconic skyline, diverse culture, and landmarks such as Times Square and Central Park."));
-        airports.add(new Airport("San Francisco International", "SFO", "North America", "San Francisco, United States",
+        airports.add(new Airport("San Francisco International", "SFO", "America", "San Francisco, United States",
                                  "San Francisco is famous for its iconic Golden Gate Bridge, vibrant arts scene, and historic neighborhoods like Chinatown."));
-        airports.add(new Airport("Toronto Pearson International", "YYZ", "North America", "Toronto, Canada",
+        airports.add(new Airport("Toronto Pearson International", "YYZ", "America", "Toronto, Canada",
                                  "Toronto is Canada’s largest city, known for its multicultural atmosphere, beautiful skyline, and world-class attractions."));
-        airports.add(new Airport("Mexico City International", "MEX", "North America", "Mexico City, Mexico",
+        airports.add(new Airport("Mexico City International", "MEX", "America", "Mexico City, Mexico",
                                  "Mexico City is the capital of Mexico, known for its rich cultural heritage, bustling city life, and historic landmarks."));
-        airports.add(new Airport("Los Angeles Long Beach", "LGB", "North America", "Long Beach, United States",
+        airports.add(new Airport("Los Angeles Long Beach", "LGB", "America", "Long Beach, United States",
                                  "Long Beach is a coastal city in California, known for its waterfront attractions, historical landmarks, and relaxed atmosphere."));
-        airports.add(new Airport("Miami International", "MIA", "North America", "Miami, United States",
+        airports.add(new Airport("Miami International", "MIA", "America", "Miami, United States",
                                  "Miami is a vibrant city known for its beaches, Latin culture, and lively nightlife."));
-        airports.add(new Airport("Vancouver International", "YVR", "North America", "Vancouver, Canada",
+        airports.add(new Airport("Vancouver International", "YVR", "America", "Vancouver, Canada",
                                  "Vancouver is a major port city in Canada, known for its beautiful natural scenery and vibrant arts and culture scene."));
-        airports.add(new Airport("Los Angeles Ontario International", "ONT", "North America", "Ontario, United States",
+        airports.add(new Airport("Los Angeles Ontario International", "ONT", "America", "Ontario, United States",
                                  "Ontario is a city in California, known for its convenient location and access to many attractions in Southern California."));
 
         airports.add(new Airport("Sydney Kingsford Smith", "SYD", "Oceania", "Sydney, Australia",
@@ -130,6 +130,18 @@ public class DataSeeder implements CommandLineRunner {
                                  "Christchurch is the largest city on New Zealand’s South Island, known for its beautiful parks and gardens."));
         airports.add(new Airport("Wellington International", "WLG", "Oceania", "Wellington, New Zealand",
                                  "Wellington is New Zealand’s capital, known for its lively arts scene, stunning waterfront, and unique cultural identity."));
+
+        airports.add(new Airport("O.R. Tambo International", "JNB", "Africa", "Johannesburg, South Africa",
+                                 "Johannesburg is South Africa's largest city, known for its rich history, vibrant culture, and economic importance."));
+        airports.add(new Airport("Cairo International", "CAI", "Africa", "Cairo, Egypt",
+                                 "Cairo is Egypt's capital, famous for its ancient monuments like the Pyramids and the Sphinx, as well as its bustling urban life."));
+        airports.add(new Airport("Cape Town International", "CPT", "Africa", "Cape Town, South Africa",
+                                 "Cape Town is one of South Africa's most beautiful cities, known for its stunning beaches, Table Mountain, and rich cultural heritage."));
+        airports.add(new Airport("Murtala Muhammed International", "LOS", "Africa", "Lagos, Nigeria",
+                                 "Lagos is Nigeria's largest city, known for its vibrant music scene, economic hub, and rapidly growing infrastructure."));
+        airports.add(new Airport("Jomo Kenyatta International", "NBO", "Africa", "Nairobi, Kenya",
+                                 "Nairobi is Kenya's capital, known for its rich wildlife, including Nairobi National Park, and its growing status as a tech hub in Africa."));
+
 
         for (Airport airport : airports) {
             airportService.createAirport(airport);
