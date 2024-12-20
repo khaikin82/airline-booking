@@ -471,16 +471,16 @@ public class DataSeeder implements CommandLineRunner {
         flights.add(new Flight(LocalDateTime.of(2025, 1, 25, 22, 0), "F0100", LocalDateTime.of(2025, 1, 25, 23, 0),
                                FlightStatus.SCHEDULED, 450, 900, airplanes.get(0), airports.get(2), airports.get(7)));
 
-        flights.add(new Flight(LocalDateTime.of(2025, 12, 24, 22, 0), "F0101", LocalDateTime.of(2025, 1, 24, 23, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 24, 22, 0), "F0101", LocalDateTime.of(2024, 12, 24, 23, 0),
                                FlightStatus.SCHEDULED, 450, 900, airplanes.get(0), airports.get(0), airports.get(10)));
 
-        flights.add(new Flight(LocalDateTime.of(2025, 12, 28, 12, 0), "F0102", LocalDateTime.of(2025, 1, 28, 13, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 28, 12, 0), "F0102", LocalDateTime.of(2024, 12, 28, 13, 0),
                                FlightStatus.SCHEDULED, 600, 1200, airplanes.get(1), airports.get(10), airports.get(0)));
 
-        flights.add(new Flight(LocalDateTime.of(2025, 12, 24, 20, 0), "F0103", LocalDateTime.of(2025, 1, 24, 23, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 24, 20, 0), "F0103", LocalDateTime.of(2024, 12, 24, 23, 0),
                                FlightStatus.SCHEDULED, 450, 900, airplanes.get(5), airports.get(0), airports.get(10)));
 
-        flights.add(new Flight(LocalDateTime.of(2025, 12, 28, 12, 0), "F0104", LocalDateTime.of(2025, 1, 28, 15, 0),
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 28, 12, 0), "F0104", LocalDateTime.of(2024, 12, 28, 15, 0),
                                FlightStatus.SCHEDULED, 600, 1200, airplanes.get(8), airports.get(10), airports.get(0)));
 
 
