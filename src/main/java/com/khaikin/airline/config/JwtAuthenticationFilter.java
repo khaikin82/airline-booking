@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 
 // Xac thuc jwt co hop le khong roi cap token o BE de truy cap cac resource khac.
 @Component
@@ -26,12 +27,28 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
     private final TokenRepository tokenRepository;
 
+    private final List<String> getExcludedPaths = List.of(
+            "/api/v1/airports",
+            "/api/v1/airplanes",
+            "/api/v1/posts"
+    );
+
+    private final List<String> postExcludedPaths = List.of(
+            "/api/v1/flights/find",
+            "/api/v1/bookings/search"
+    );
+
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         if (request.getServletPath().contains("/api/v1/auth")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        if (!shouldAuthenticate(request)) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -67,6 +84,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
+    }
+
+    private boolean shouldAuthenticate(HttpServletRequest request) {
+        if (request.getMethod().equalsIgnoreCase("GET")) {
+            return getExcludedPaths.stream()
+                    .noneMatch(path -> request.getRequestURI().equals(path));
+        }
+
+        if (request.getMethod().equalsIgnoreCase("POST")) {
+            return postExcludedPaths.stream()
+                    .noneMatch(path -> request.getRequestURI().equals(path));
+        }
+        return true;
     }
 
 }

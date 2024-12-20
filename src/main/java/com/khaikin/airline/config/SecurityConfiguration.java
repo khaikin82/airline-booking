@@ -38,7 +38,6 @@ public class SecurityConfiguration {
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
-//                .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)

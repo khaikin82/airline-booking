@@ -33,12 +33,18 @@ public class AirplaneServiceImpl implements AirplaneService {
 
     @Override
     public Airplane createAirplane(Airplane airplane) {
+        if (airplane.getEconomySeatNumber() < 0 || airplane.getBusinessSeatNumber() < 0) {
+            throw new ConflictException("Seat number can not < 0");
+        }
         return airplaneRepository.save(airplane);
     }
 
 
     @Override
     public Airplane updateAirplane(Integer id, Airplane updateAirplane) {
+        if (updateAirplane.getEconomySeatNumber() < 0 || updateAirplane.getBusinessSeatNumber() < 0) {
+            throw new ConflictException("Seat number can not < 0");
+        }
         Optional<Airplane> airplaneOptional = airplaneRepository.findById(id);
         if (airplaneOptional.isPresent()) {
             Airplane airplane = airplaneOptional.get();

@@ -483,6 +483,10 @@ public class DataSeeder implements CommandLineRunner {
         flights.add(new Flight(LocalDateTime.of(2024, 12, 28, 12, 0), "F0104", LocalDateTime.of(2024, 12, 28, 15, 0),
                                FlightStatus.SCHEDULED, 600, 1200, airplanes.get(8), airports.get(10), airports.get(0)));
 
+        flights.add(new Flight(LocalDateTime.of(2024, 12, 28, 12, 0), "F0105", LocalDateTime.of(2024, 12, 28, 15, 0),
+                               FlightStatus.SCHEDULED, 600, 1200, airplanes.get(8), airports.get(10),
+                               airports.get(0)));
+
 
         for (Flight flight : flights) {
             flightService.createFlight(flight);

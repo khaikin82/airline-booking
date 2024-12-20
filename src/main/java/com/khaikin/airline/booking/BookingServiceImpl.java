@@ -1,6 +1,7 @@
 package com.khaikin.airline.booking;
 
 import com.khaikin.airline.booking.dto.SearchBookingRequest;
+import com.khaikin.airline.exception.ConflictException;
 import com.khaikin.airline.exception.ResourceNotFoundException;
 import com.khaikin.airline.flight.FlightRepository;
 import com.khaikin.airline.flight.FlightService;
@@ -39,22 +40,35 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking createBooking(Booking booking) {
+        if (booking.getPrice() < 0) {
+            throw new ConflictException("Booking price < 0");
+        }
+        if (booking.getFlight().equals(booking.getReturnFlight())) {
+            throw new ConflictException("Flight is the same as Return flight!");
+        }
+
+        if (!booking.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            throw new ConflictException("Email is invalid");
+        }
+
+        if (!booking.getPhoneNumber().matches("\\d{10}")) {
+            throw new ConflictException("Phone number is invalid");
+        }
+
         booking.setReservationTime(LocalDateTime.now());
         if (!booking.getIsRoundTrip()) {
             booking.setReturnFlight(null);
         }
-//        if (booking.getFlight().getId()??
+
         Booking savedBooking = booking;
-        while (true) {
-            try {
-                booking.setCode(generateRandomString(6));
-                savedBooking = bookingRepository.save(booking);
-                break;
-            } catch (Exception ignored) {
+        String code = generateRandomString(6);
 
-            }
+        while (bookingRepository.findByCode(code).isPresent()) {
+            code = generateRandomString(6);
         }
+        booking.setCode(code);
 
+        savedBooking = bookingRepository.save(booking);
         updateSeatBookedNumber(savedBooking);
 
         return savedBooking;
@@ -62,6 +76,22 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking updateBooking(Integer id, Booking updateBooking) {
+
+        if (updateBooking.getPrice() < 0) {
+            throw new ConflictException("Booking price < 0");
+        }
+        if (updateBooking.getFlight().equals(updateBooking.getReturnFlight())) {
+            throw new ConflictException("Flight is the same as Return flight!");
+        }
+
+        if (!updateBooking.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            throw new ConflictException("Email is invalid");
+        }
+
+        if (!updateBooking.getPhoneNumber().matches("\\d{10}")) {
+            throw new ConflictException("Phone number is invalid");
+        }
+
         Optional<Booking> bookingOptional = bookingRepository.findById(id);
         if (bookingOptional.isPresent()) {
             Booking booking = bookingOptional.get();
