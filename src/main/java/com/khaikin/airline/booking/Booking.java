@@ -77,13 +77,15 @@ public class Booking {
         this.price = price;
     }
 
-    public Booking(String email, String phoneNumber, Flight flight, String seatType, Integer price,
-                   List<Passenger> passengers) {
+    public Booking(String email, String phoneNumber, String seatClass, String returnSeatClass, Integer price,
+                   Boolean isRoundTrip, Flight flight, Flight returnFlight) {
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.flight = flight;
-        this.seatClass = seatType;
+        this.seatClass = seatClass;
+        this.returnSeatClass = returnSeatClass;
         this.price = price;
-        this.passengers = passengers;
+        this.isRoundTrip = isRoundTrip;
+        this.flight = flight;
+        this.returnFlight = returnFlight;
     }
 }

@@ -465,6 +465,19 @@ public class DataSeeder implements CommandLineRunner {
         flights.add(new Flight(LocalDateTime.of(2025, 1, 25, 22, 0), "F0100", LocalDateTime.of(2025, 1, 25, 23, 0),
                                FlightStatus.SCHEDULED, 450, 900, airplanes.get(0), airports.get(2), airports.get(7)));
 
+        flights.add(new Flight(LocalDateTime.of(2025, 12, 24, 22, 0), "F0101", LocalDateTime.of(2025, 1, 24, 23, 0),
+                               FlightStatus.SCHEDULED, 450, 900, airplanes.get(0), airports.get(0), airports.get(10)));
+
+        flights.add(new Flight(LocalDateTime.of(2025, 12, 28, 12, 0), "F0102", LocalDateTime.of(2025, 1, 28, 13, 0),
+                               FlightStatus.SCHEDULED, 600, 1200, airplanes.get(1), airports.get(10), airports.get(0)));
+
+        flights.add(new Flight(LocalDateTime.of(2025, 12, 24, 20, 0), "F0103", LocalDateTime.of(2025, 1, 24, 23, 0),
+                               FlightStatus.SCHEDULED, 450, 900, airplanes.get(5), airports.get(0), airports.get(10)));
+
+        flights.add(new Flight(LocalDateTime.of(2025, 12, 28, 12, 0), "F0104", LocalDateTime.of(2025, 1, 28, 15, 0),
+                               FlightStatus.SCHEDULED, 600, 1200, airplanes.get(8), airports.get(10), airports.get(0)));
+
+
         for (Flight flight : flights) {
             flightService.createFlight(flight);
         }
@@ -489,6 +502,17 @@ public class DataSeeder implements CommandLineRunner {
         bookings.add(new Booking("user14@gmail.com", "0985678904", flights.get(7), "Business", 1200));
         bookings.add(new Booking("user15@gmail.com", "0986789015", flights.get(8), "Business", 1000));
 
+        bookings.add(
+                new Booking("john.doe@example.com", "0986789016", "Economy", "Business", 1200, true, flights.get(101),
+                            flights.get(102)));
+        bookings.add(
+                new Booking("alice.smith@example.com", "0986789017", "Business", "First", 3500, true, flights.get(101),
+                            flights.get(102)));
+        bookings.add(
+                new Booking("bob.jones@example.com", "0986789018", "First", "Economy", 5000, true, flights.get(103),
+                            flights.get(104)));
+
+
         for (Booking booking : bookings) {
             bookingService.createBooking(booking);
         }
@@ -496,27 +520,28 @@ public class DataSeeder implements CommandLineRunner {
         // passenger
         List<Passenger> passengers = new ArrayList<>();
         passengers.add(
-                new Passenger(PassengerTitle.MR, "John", "Doe", PassengerType.ADULT, "1990-01-01", bookings.get(0)));
+                new Passenger(PassengerTitle.MR, "John", "Doe", PassengerType.ADULT, "1990-01-01", bookings.get(16)));
         passengers.add(
-                new Passenger(PassengerTitle.MRS, "Jane", "Smith", PassengerType.ADULT, "1985-05-15", bookings.get(0)));
+                new Passenger(PassengerTitle.MRS, "Jane", "Smith", PassengerType.ADULT, "1985-05-15",
+                              bookings.get(17)));
         passengers.add(new Passenger(PassengerTitle.MS, "Emily", "Johnson", PassengerType.ADULT, "1992-09-21",
-                                     bookings.get(1)));
+                                     bookings.get(18)));
         passengers.add(new Passenger(PassengerTitle.DOCTOR, "Michael", "Brown", PassengerType.ADULT, "1978-11-30",
-                                     bookings.get(1)));
+                                     bookings.get(17)));
         passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Sarah", "Davis", PassengerType.ADULT, "1965-07-22",
-                                     bookings.get(1)));
+                                     bookings.get(0)));
 
         passengers.add(new Passenger(PassengerTitle.BOY, "James", "Wilson", PassengerType.CHILD, "2010-03-10",
-                                     bookings.get(2)));
+                                     bookings.get(1)));
         passengers.add(new Passenger(PassengerTitle.MS, "Olivia", "Martinez", PassengerType.CHILD, "2012-04-18",
-                                     bookings.get(3)));
+                                     bookings.get(1)));
 
         passengers.add(new Passenger(PassengerTitle.GIRL, "Sophia", "Garcia", PassengerType.INFANT, "2021-06-05",
-                                     bookings.get(3)));
+                                     bookings.get(2)));
         passengers.add(new Passenger(PassengerTitle.DOCTOR, "David", "Anderson", PassengerType.ADULT, "1980-02-14",
-                                     bookings.get(3)));
+                                     bookings.get(2)));
         passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Emma", "Thomas", PassengerType.ADULT, "1973-08-29",
-                                     bookings.get(4)));
+                                     bookings.get(3)));
 
         passengers.add(
                 new Passenger(PassengerTitle.MR, "Chris", "Lee", PassengerType.ADULT, "1991-03-03", bookings.get(4)));
