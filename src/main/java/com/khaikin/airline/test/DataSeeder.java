@@ -50,92 +50,86 @@ public class DataSeeder implements CommandLineRunner {
         List<Airport> airports = new ArrayList<>();
 
         airports.add(new Airport("Noi Bai International", "HAN", "Asia", "Ha Noi, Viet Nam",
-                                 "Noi Bai International Airport is the largest and busiest airport in Vietnam, serving as the main gateway to Hanoi and northern Vietnam."));
+                                 "Hanoi is the capital of Vietnam, known for its centuries-old architecture, vibrant culture, and beautiful lakes."));
         airports.add(new Airport("Tan Son Nhat International", "SGN", "Asia", "Ho Chi Minh City, Viet Nam",
-                                 "Tan Son Nhat is Vietnam's busiest airport, handling both domestic and international flights to and from Ho Chi Minh City."));
+                                 "Ho Chi Minh City (formerly Saigon) is the largest city in Vietnam, famous for its bustling streets, rich history, and dynamic energy."));
         airports.add(new Airport("Da Nang International", "DAD", "Asia", "Da Nang, Viet Nam",
-                                 "Da Nang International is the main airport serving central Vietnam, offering both domestic and limited international flights."));
+                                 "Da Nang is a coastal city in central Vietnam, known for its beautiful beaches, stunning mountain views, and historical landmarks."));
         airports.add(new Airport("Cam Ranh International", "CXR", "Asia", "Nha Trang, Viet Nam",
-                                 "Cam Ranh International serves the coastal city of Nha Trang and is a popular gateway for tourists visiting Vietnam’s southern beaches."));
+                                 "Nha Trang is a popular coastal resort city, known for its stunning beaches, vibrant nightlife, and rich cultural heritage."));
         airports.add(new Airport("Phu Quoc International", "PQC", "Asia", "Phu Quoc, Viet Nam",
-                                 "Phu Quoc International is located on Phu Quoc Island, a popular destination for domestic and international tourists."));
+                                 "Phu Quoc is an idyllic island known for its beautiful beaches, clear waters, and tranquil atmosphere, making it a popular tourist destination."));
         airports.add(new Airport("Changi", "SIN", "Asia", "Singapore, Singapore",
-                                 "Changi Airport is one of the world’s most awarded airports, known for its exceptional facilities, cleanliness, and efficiency."));
+                                 "Singapore is a global financial hub, known for its cleanliness, futuristic architecture, and rich multicultural heritage."));
         airports.add(new Airport("Suvarnabhumi", "BKK", "Asia", "Bangkok, Thailand",
-                                 "Suvarnabhumi Airport is the main international gateway to Thailand, handling millions of passengers annually."));
+                                 "Bangkok is Thailand’s capital, known for its vibrant street life, ornate temples, and bustling markets."));
         airports.add(new Airport("Kuala Lumpur International", "KUL", "Asia", "Kuala Lumpur, Malaysia",
-                                 "KLIA is Malaysia’s primary airport, offering modern facilities and serving as a " +
-                                         "major hub for Southeast Asia."));
+                                 "Kuala Lumpur is the capital city of Malaysia, known for its modern skyline, shopping, and food culture."));
         airports.add(new Airport("Hong Kong International", "HKG", "Asia", "Hong Kong, China",
-                                 "Hong Kong International is one of the busiest airports in the world, offering a wide range of amenities and services for travelers."));
+                                 "Hong Kong is a global financial center, known for its skyline, busy harbor, and as a gateway between East and West."));
         airports.add(new Airport("Incheon International", "ICN", "Asia", "Seoul, South Korea",
-                                 "Incheon International is renowned for its excellent service, high-tech amenities, and extensive duty-free shopping options."));
+                                 "Seoul is South Korea’s capital, offering a dynamic mix of modern skyscrapers, traditional palaces, and vibrant street markets."));
         airports.add(new Airport("Narita", "NRT", "Asia", "Tokyo, Japan",
-                                 "Narita Airport is one of Japan's major international airports, serving as a hub for flights between Japan and the rest of the world."));
-        airports.add(new Airport("Haneda", "HND", "Asia", "Tokyo, Japan",
-                                 "Haneda Airport is one of the busiest airports in the world, offering excellent connectivity to domestic and international destinations."));
+                                 "Tokyo is one of the most populous cities in the world, known for its blend of traditional culture and modern technology."));
         airports.add(new Airport("Beijing Capital International", "PEK", "Asia", "Beijing, China",
-                                 "Beijing Capital is the busiest airport in China and a major hub for international flights to and from the Asia-Pacific region."));
+                                 "Beijing is China’s capital, rich in historical landmarks, including the Forbidden City and the Great Wall of China."));
         airports.add(new Airport("Shanghai Pudong International", "PVG", "Asia", "Shanghai, China",
-                                 "Pudong International is one of China’s busiest airports, offering both domestic and international flights to destinations around the world."));
+                                 "Shanghai is China’s largest city, known for its futuristic skyline, historic landmarks, and being a global financial hub."));
         airports.add(new Airport("Dubai International", "DXB", "Asia", "Dubai, United Arab Emirates",
-                                 "Dubai International is one of the busiest airports globally, offering state-of-the-art facilities and world-class services."));
+                                 "Dubai is a global city, known for its luxury shopping, ultramodern architecture, and thriving tourism industry."));
         airports.add(new Airport("Abu Dhabi International", "AUH", "Asia", "Abu Dhabi, United Arab Emirates",
-                                 "Abu Dhabi International is a major hub for flights to the Middle East, Africa, and Asia, known for its luxurious facilities."));
+                                 "Abu Dhabi is the capital of the UAE, known for its stunning modern architecture, luxury shopping, and beautiful beaches."));
 
         airports.add(new Airport("Heathrow", "LHR", "Europe", "London, United Kingdom",
-                                 "Heathrow is the busiest airport in the United Kingdom and one of the busiest in Europe, serving as a major international hub."));
-        airports.add(new Airport("Gatwick", "LGW", "Europe", "London, United Kingdom",
-                                 "Gatwick is London’s second largest airport, offering flights to destinations across Europe, the Americas, and Asia."));
+                                 "London is the capital of the United Kingdom, known for its rich history, iconic landmarks, and cultural diversity."));
         airports.add(new Airport("Charles de Gaulle", "CDG", "Europe", "Paris, France",
-                                 "Charles de Gaulle is the largest airport in France, a key hub for international flights and the primary airport serving Paris."));
+                                 "Paris is the capital of France, known for its romantic ambiance, historic architecture, and world-famous landmarks like the Eiffel Tower."));
         airports.add(new Airport("Frankfurt", "FRA", "Europe", "Frankfurt, Germany",
-                                 "Frankfurt Airport is one of Europe’s major air transport hubs, serving as a key gateway between Europe and the rest of the world."));
+                                 "Frankfurt is Germany’s financial capital, known for its modern skyline and being a key international transport hub."));
         airports.add(new Airport("Munich", "MUC", "Europe", "Munich, Germany",
-                                 "Munich Airport is one of Germany’s busiest airports, serving as a major international hub and key transit point in Europe."));
+                                 "Munich is famous for its beer gardens, rich cultural scene, and as the home of the annual Oktoberfest."));
         airports.add(new Airport("Rome Fiumicino", "FCO", "Europe", "Rome, Italy",
-                                 "Fiumicino is Italy's largest airport, serving as a key hub for both international flights and connections within Europe."));
+                                 "Rome is Italy's capital, filled with ancient history, including the Colosseum, Roman Forum, and the Vatican."));
         airports.add(new Airport("Madrid-Barajas", "MAD", "Europe", "Madrid, Spain",
-                                 "Madrid-Barajas is Spain's largest airport and one of the busiest in Europe, with a wide variety of international connections."));
+                                 "Madrid is Spain's capital, known for its lively atmosphere, art museums, and beautiful parks."));
         airports.add(new Airport("Lisbon Humberto Delgado", "LIS", "Europe", "Lisbon, Portugal",
-                                 "Lisbon's Humberto Delgado Airport is Portugal’s busiest airport, offering flights to destinations across Europe and the Americas."));
+                                 "Lisbon is the capital of Portugal, known for its historical sites, vibrant nightlife, and beautiful coastal views."));
         airports.add(new Airport("Zurich", "ZRH", "Europe", "Zurich, Switzerland",
-                                 "Zurich Airport is Switzerland's largest and busiest airport, offering connections to destinations around the world."));
+                                 "Zurich is Switzerland’s largest city, known for its stunning lakeside views, charming old town, and global financial center."));
 
         airports.add(new Airport("Los Angeles International", "LAX", "North America", "Los Angeles, United States",
-                                 "LAX is one of the largest airports in the United States and serves as a major gateway to the West Coast."));
+                                 "Los Angeles is the entertainment capital of the world, known for Hollywood, beaches, and year-round sunny weather."));
         airports.add(new Airport("John F. Kennedy International", "JFK", "North America", "New York, United States",
-                                 "JFK is a major international gateway in New York City, offering flights to over 59 million passengers annually."));
+                                 "New York City is known as 'The Big Apple', famous for its iconic skyline, diverse culture, and landmarks such as Times Square and Central Park."));
         airports.add(new Airport("San Francisco International", "SFO", "North America", "San Francisco, United States",
-                                 "San Francisco International is one of the busiest airports in the U.S., offering flights to destinations across North America and Asia."));
+                                 "San Francisco is famous for its iconic Golden Gate Bridge, vibrant arts scene, and historic neighborhoods like Chinatown."));
         airports.add(new Airport("Toronto Pearson International", "YYZ", "North America", "Toronto, Canada",
-                                 "Toronto Pearson is Canada’s largest and busiest airport, serving a wide variety of international and domestic routes."));
+                                 "Toronto is Canada’s largest city, known for its multicultural atmosphere, beautiful skyline, and world-class attractions."));
         airports.add(new Airport("Mexico City International", "MEX", "North America", "Mexico City, Mexico",
-                                 "Mexico City International is the busiest airport in Latin America and a key gateway for flights to and from the region."));
+                                 "Mexico City is the capital of Mexico, known for its rich cultural heritage, bustling city life, and historic landmarks."));
         airports.add(new Airport("Los Angeles Long Beach", "LGB", "North America", "Long Beach, United States",
-                                 "Long Beach Airport is a smaller, more relaxed alternative to LAX, offering domestic flights with a charming, historical vibe."));
+                                 "Long Beach is a coastal city in California, known for its waterfront attractions, historical landmarks, and relaxed atmosphere."));
         airports.add(new Airport("Miami International", "MIA", "North America", "Miami, United States",
-                                 "Miami International is one of the busiest airports in the U.S., offering numerous international connections to Latin America and Europe."));
+                                 "Miami is a vibrant city known for its beaches, Latin culture, and lively nightlife."));
         airports.add(new Airport("Vancouver International", "YVR", "North America", "Vancouver, Canada",
-                                 "Vancouver International is one of the busiest airports in Canada, known for its efficient service and beautiful location."));
+                                 "Vancouver is a major port city in Canada, known for its beautiful natural scenery and vibrant arts and culture scene."));
         airports.add(new Airport("Los Angeles Ontario International", "ONT", "North America", "Ontario, United States",
-                                 "Ontario International serves the Inland Empire region of California, offering a convenient alternative to LAX."));
+                                 "Ontario is a city in California, known for its convenient location and access to many attractions in Southern California."));
 
         airports.add(new Airport("Sydney Kingsford Smith", "SYD", "Oceania", "Sydney, Australia",
-                                 "Sydney Kingsford Smith is Australia’s busiest airport, known for its scenic views of the Sydney Opera House and Harbour Bridge."));
+                                 "Sydney is Australia’s largest city, known for its iconic Opera House, Harbour Bridge, and vibrant coastal lifestyle."));
         airports.add(new Airport("Auckland International", "AKL", "Oceania", "Auckland, New Zealand",
-                                 "Auckland International is New Zealand’s largest and busiest airport, offering connections to the Pacific, Asia, and beyond."));
+                                 "Auckland is New Zealand’s largest city, known for its stunning harbors, beautiful parks, and vibrant cultural life."));
         airports.add(new Airport("Queenstown", "ZQN", "Oceania", "Queenstown, New Zealand",
-                                 "Queenstown Airport serves the popular resort town of Queenstown, known for its stunning views and adventure tourism."));
+                                 "Queenstown is New Zealand’s adventure capital, offering breathtaking landscapes and exciting outdoor activities."));
         airports.add(new Airport("Melbourne Tullamarine", "MEL", "Oceania", "Melbourne, Australia",
-                                 "Melbourne Tullamarine is the busiest airport in Melbourne, serving as a hub for both domestic and international flights."));
+                                 "Melbourne is known for its arts and culture, sporting events, and thriving culinary scene."));
         airports.add(new Airport("Brisbane International", "BNE", "Oceania", "Brisbane, Australia",
-                                 "Brisbane International is a major gateway to Queensland, with modern facilities and excellent connections to Asia and beyond."));
+                                 "Brisbane is a vibrant city known for its sunny weather, beautiful parks, and thriving outdoor lifestyle."));
         airports.add(new Airport("Christchurch International", "CHC", "Oceania", "Christchurch, New Zealand",
-                                 "Christchurch International serves the South Island of New Zealand, providing connections to key destinations within Oceania and Asia."));
+                                 "Christchurch is the largest city on New Zealand’s South Island, known for its beautiful parks and gardens."));
         airports.add(new Airport("Wellington International", "WLG", "Oceania", "Wellington, New Zealand",
-                                 "Wellington International is the primary airport serving the capital city of New Zealand, known for its strong domestic network and scenic location."));
-
+                                 "Wellington is New Zealand’s capital, known for its lively arts scene, stunning waterfront, and unique cultural identity."));
 
         for (Airport airport : airports) {
             airportService.createAirport(airport);
