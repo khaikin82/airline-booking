@@ -684,17 +684,35 @@ public class DataSeeder implements CommandLineRunner {
         // post
 
         String filePath =
-                "src/main/java/com/khaikin/airline/test/gintoki.jpg";
+                "src/main/java/com/khaikin/airline/test/discount_01.jpg";
         String filePath1 =
-                "src/main/java/com/khaikin/airline/test/gintoki_01.jpg";
+                "src/main/java/com/khaikin/airline/test/discount_02.jpg";
         String filePath2 =
-                "src/main/java/com/khaikin/airline/test/gintoki_02.jpg";
+                "src/main/java/com/khaikin/airline/test/discount_03.jpg";
+        String filePath3 =
+                "src/main/java/com/khaikin/airline/test/discount_04.jpg";
 
         byte[] imageData = Files.readAllBytes(Paths.get(filePath));
         byte[] imageData1 = Files.readAllBytes(Paths.get(filePath1));
         byte[] imageData2 = Files.readAllBytes(Paths.get(filePath2));
+        byte[] imageData3 = Files.readAllBytes(Paths.get(filePath3));
 
         List<Post> posts = List.of(new Post[]{
+                new Post("discount", "2024 Special Flight Offers",
+                         "Book now to save up to 30% on select flights in 2024! Whether for business or leisure, don't miss these limited-time discounts. Secure the best deals while they last!",
+                         "discount1.jpg", "image/jpeg", imageData2),
+
+                new Post("discount", "Flash Sale: 24-Hour Flight Discount",
+                         "Hurry! For the next 24 hours, enjoy up to 40% off on select flights. Don’t miss out on amazing savings for your next trip – book your tickets now before time runs out.",
+                         "discount2.jpg", "image/jpeg", imageData1),
+                new Post("discount", "2024 Special Flight Offers",
+                         "Book now to save up to 30% on select flights in 2024! Whether for business or leisure, don't miss these limited-time discounts. Secure the best deals while they last!",
+                         "discount1.jpg", "image/jpeg", imageData),
+
+                new Post("discount", "Flash Sale: 24-Hour Flight Discount",
+                         "Hurry! For the next 24 hours, enjoy up to 40% off on select flights. Don’t miss out on amazing savings for your next trip – book your tickets now before time runs out.",
+                         "discount2.jpg", "image/jpeg", imageData3),
+
                 new Post("news", "Airline Industry in 2024",
                          "The airline industry is set for a big year in 2024 with innovations in eco-friendly planes, better customer service, and smoother travel experiences. Stay tuned for how these trends will shape air travel this year.",
                          "news1.jpg", "image/jpeg", imageData),
@@ -706,14 +724,6 @@ public class DataSeeder implements CommandLineRunner {
                 new Post("news", "Safety Innovations in 2024",
                          "Airlines are introducing cutting-edge safety tech this year, from better in-cabin air filtration to advanced monitoring systems. Learn about these innovations ensuring a safer flying experience for you.",
                          "news3.jpg", "image/jpeg", imageData2),
-
-                new Post("discount", "2024 Special Flight Offers",
-                         "Book now to save up to 30% on select flights in 2024! Whether for business or leisure, don't miss these limited-time discounts. Secure the best deals while they last!",
-                         "discount1.jpg", "image/jpeg", imageData2),
-
-                new Post("discount", "Flash Sale: 24-Hour Flight Discount",
-                         "Hurry! For the next 24 hours, enjoy up to 40% off on select flights. Don’t miss out on amazing savings for your next trip – book your tickets now before time runs out.",
-                         "discount2.jpg", "image/jpeg", imageData1),
 
                 new Post("news", "Sustainable Air Travel in 2024",
                          "Airlines are embracing sustainability with fuel-efficient planes and carbon offset programs. Find out how these changes are making air travel greener and how you can help.",
