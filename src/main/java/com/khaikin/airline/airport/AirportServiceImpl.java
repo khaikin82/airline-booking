@@ -53,7 +53,7 @@ public class AirportServiceImpl implements AirportService {
 
             Boolean isActive = updateAirport.getIsActive();
             if (airport.getIsActive() == isActive) {
-                return airport;
+                return airportRepository.save(airport);
             }
             if (!isActive) {
                 List<Flight> flights = flightRepository.findFlightsInUseByAirportId(id);
@@ -61,6 +61,7 @@ public class AirportServiceImpl implements AirportService {
                     throw new ConflictException("Airport in use with id: " + id);
                 }
             }
+
             airport.setIsActive(isActive);
 
             return airportRepository.save(airport);
@@ -75,7 +76,7 @@ public class AirportServiceImpl implements AirportService {
         if (airportOptional.isPresent()) {
             Airport airport = airportOptional.get();
             if (airport.getIsActive() == isActive) {
-                return airport;
+                return airportRepository.save(airport);
             }
             if (!isActive) {
                 List<Flight> flights = flightRepository.findFlightsInUseByAirportId(id);

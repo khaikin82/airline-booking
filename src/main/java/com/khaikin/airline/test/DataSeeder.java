@@ -730,5 +730,7 @@ public class DataSeeder implements CommandLineRunner {
         for (Post post : posts) {
             postService.createPost(post);
         }
+
+
     }
 }
