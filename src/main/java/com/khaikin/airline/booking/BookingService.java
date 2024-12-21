@@ -1,6 +1,7 @@
 package com.khaikin.airline.booking;
 
 import com.khaikin.airline.booking.dto.SearchBookingRequest;
+import com.khaikin.airline.booking.dto.UpdateBookingStatusRequest;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface BookingService {
 
     public Booking updateBooking(Integer id, Booking updateBooking);
 
-    public Booking updateBookingStatus(Integer id, BookingStatus bookingStatus);
+    public Booking updateBookingStatus(UpdateBookingStatusRequest updateBookingStatusRequest);
 
     public Booking searchBooking(SearchBookingRequest searchBookingRequest);
 

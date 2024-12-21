@@ -1,6 +1,7 @@
 package com.khaikin.airline.booking;
 
 import com.khaikin.airline.booking.dto.SearchBookingRequest;
+import com.khaikin.airline.booking.dto.UpdateBookingStatusRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,10 +41,10 @@ public class BookingController {
         return ResponseEntity.ok(updatedBooking);
     }
 
-    @PutMapping("/{id}/status")
-    public ResponseEntity<Booking> updateBookingStatus(@PathVariable Integer id,
-                                                       @RequestParam BookingStatus bookingStatus) {
-        Booking updatedBooking = bookingService.updateBookingStatus(id, bookingStatus);
+    @PutMapping("/update-status")
+    public ResponseEntity<Booking> updateBookingStatus(
+            @RequestBody UpdateBookingStatusRequest updateBookingStatusRequest) {
+        Booking updatedBooking = bookingService.updateBookingStatus(updateBookingStatusRequest);
         return ResponseEntity.ok(updatedBooking);
     }
 

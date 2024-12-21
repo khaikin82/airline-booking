@@ -1,6 +1,7 @@
 package com.khaikin.airline.booking;
 
 import com.khaikin.airline.booking.dto.SearchBookingRequest;
+import com.khaikin.airline.booking.dto.UpdateBookingStatusRequest;
 import com.khaikin.airline.exception.ConflictException;
 import com.khaikin.airline.exception.ResourceNotFoundException;
 import com.khaikin.airline.flight.FlightRepository;
@@ -143,11 +144,11 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Booking updateBookingStatus(Integer id, BookingStatus bookingStatus) {
-        Optional<Booking> bookingOptional = bookingRepository.findById(id);
+    public Booking updateBookingStatus(UpdateBookingStatusRequest updateBookingStatusRequest) {
+        Optional<Booking> bookingOptional = bookingRepository.findById(updateBookingStatusRequest.getId());
         if (bookingOptional.isPresent()) {
             Booking booking = bookingOptional.get();
-            booking.setBookingStatus(bookingStatus);
+            booking.setBookingStatus(updateBookingStatusRequest.getBookingStatus());
             return bookingRepository.save(booking);
         } else {
             throw new ResourceNotFoundException("Booking not found");
