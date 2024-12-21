@@ -1,4 +1,4 @@
-package com.khaikin.airline.test;
+package com.khaikin.airline.data;
 
 import com.khaikin.airline.airplane.Airplane;
 import com.khaikin.airline.airplane.AirplaneService;
@@ -683,16 +683,17 @@ public class DataSeeder implements CommandLineRunner {
 
         // post
 
-        String filePath =
-                "src/main/java/com/khaikin/airline/test/discount_01.jpg";
+        String filePath0 =
+                "src/main/java/com/khaikin/airline/data/discount_00.jpg";
         String filePath1 =
-                "src/main/java/com/khaikin/airline/test/discount_02.jpg";
+                "src/main/java/com/khaikin/airline/data/discount_01.jpg";
         String filePath2 =
-                "src/main/java/com/khaikin/airline/test/discount_03.jpg";
+                "src/main/java/com/khaikin/airline/data/discount_02.jpg";
         String filePath3 =
-                "src/main/java/com/khaikin/airline/test/discount_04.jpg";
+                "src/main/java/com/khaikin/airline/data/discount_03.jpg";
 
-        byte[] imageData = Files.readAllBytes(Paths.get(filePath));
+
+        byte[] imageData0 = Files.readAllBytes(Paths.get(filePath0));
         byte[] imageData1 = Files.readAllBytes(Paths.get(filePath1));
         byte[] imageData2 = Files.readAllBytes(Paths.get(filePath2));
         byte[] imageData3 = Files.readAllBytes(Paths.get(filePath3));
@@ -704,34 +705,36 @@ public class DataSeeder implements CommandLineRunner {
 
                 new Post("discount", "Flash Sale: 24-Hour Flight Discount",
                          "Hurry! For the next 24 hours, enjoy up to 40% off on select flights. Don’t miss out on amazing savings for your next trip – book your tickets now before time runs out.",
-                         "discount2.jpg", "image/jpeg", imageData1),
-                new Post("discount", "2024 Special Flight Offers",
-                         "Book now to save up to 30% on select flights in 2024! Whether for business or leisure, don't miss these limited-time discounts. Secure the best deals while they last!",
-                         "discount1.jpg", "image/jpeg", imageData),
-
-                new Post("discount", "Flash Sale: 24-Hour Flight Discount",
-                         "Hurry! For the next 24 hours, enjoy up to 40% off on select flights. Don’t miss out on amazing savings for your next trip – book your tickets now before time runs out.",
                          "discount2.jpg", "image/jpeg", imageData3),
+
+                new Post("discount", "Exclusive 2024 Airline Discounts",
+                         "Take advantage of our exclusive 2024 flight discounts and save up to 25%! Book your next adventure or business trip today with unbeatable prices. Hurry, these deals won't last long!",
+                         "discount2.jpg", "image/jpeg", imageData1),
+
+                new Post("discount", "2024 Low-Cost Airline Sale",
+                         "Don’t miss our 2024 low-cost airline sale! Save up to 30% on selected domestic and " +
+                                 "international flights. Perfect for travelers looking for great deals without compromising on quality. Book now before seats fill up!",
+                         "discount3.jpg", "image/jpeg", imageData0),
 
                 new Post("news", "Airline Industry in 2024",
                          "The airline industry is set for a big year in 2024 with innovations in eco-friendly planes, better customer service, and smoother travel experiences. Stay tuned for how these trends will shape air travel this year.",
-                         "news1.jpg", "image/jpeg", imageData),
+                         "news1.jpg", "image/jpeg", imageData0),
 
                 new Post("news", "New Routes in 2024",
                          "Exciting new flight routes are opening up in 2024! Airlines are expanding their networks to more destinations, giving you more options for your next trip. Check out these new routes and plan your travels.",
-                         "news2.jpg", "image/jpeg", imageData1),
+                         "news2.jpg", "image/jpeg", imageData2),
 
                 new Post("news", "Safety Innovations in 2024",
                          "Airlines are introducing cutting-edge safety tech this year, from better in-cabin air filtration to advanced monitoring systems. Learn about these innovations ensuring a safer flying experience for you.",
-                         "news3.jpg", "image/jpeg", imageData2),
+                         "news3.jpg", "image/jpeg", imageData1),
 
                 new Post("news", "Sustainable Air Travel in 2024",
                          "Airlines are embracing sustainability with fuel-efficient planes and carbon offset programs. Find out how these changes are making air travel greener and how you can help.",
-                         "news4.jpg", "image/jpeg", imageData),
+                         "news4.jpg", "image/jpeg", imageData0),
 
                 new Post("news", "Premium Airline Services in 2024",
                          "Business and first-class passengers are enjoying even more luxurious services this year, from priority boarding to fine dining. Upgrade your next flight for a truly premium experience.",
-                         "news5.jpg", "image/jpeg", imageData1),
+                         "news5.jpg", "image/jpeg", imageData3),
 
                 new Post("news", "AI Transforming Airline Service",
                          "AI is improving the airline experience by streamlining check-ins, offering personalized services, and more. Learn how AI is making air travel smarter and more efficient for you.",
