@@ -10,6 +10,8 @@ public interface UserService {
 
     public User createUser(User user);
 
+    public User changePassword(ChangePasswordRequest request);
+
     public void deleteUserById(int userId);
 
 }

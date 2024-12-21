@@ -2,6 +2,7 @@ package com.khaikin.airline.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.khaikin.airline.config.JwtService;
+import com.khaikin.airline.exception.ConflictException;
 import com.khaikin.airline.token.Token;
 import com.khaikin.airline.token.TokenRepository;
 import com.khaikin.airline.token.TokenType;
@@ -29,6 +30,10 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        if (!request.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            throw new ConflictException("Email is invalid");
+        }
+
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -45,12 +50,18 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
+        if (!request.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            throw new ConflictException("Email is invalid");
+        }
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
                 )
         );
+
+
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);

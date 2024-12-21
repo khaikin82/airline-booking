@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class Passenger {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private PassengerTitle passengerTitle; // MR, MRS, MS, DOCTOR, PROFESSOR
+    private PassengerTitle passengerTitle; // MR, MRS, MS, DOCTOR, PROFESSOR, BOY, GIRL
 
 
     private String firstname;
@@ -26,7 +28,7 @@ public class Passenger {
     @Enumerated(EnumType.STRING)
     private PassengerType passengerType; // ADULT, CHILD, INFANT
 
-    private String dob;
+    private LocalDate dob;
 
     @JsonBackReference("passenger")
     @ManyToOne
@@ -34,7 +36,7 @@ public class Passenger {
     private Booking booking;
 
     public Passenger(PassengerTitle passengerTitle, String firstname, String lastname, PassengerType passengerType,
-                     String dob) {
+                     LocalDate dob) {
         this.passengerTitle = passengerTitle;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -43,7 +45,7 @@ public class Passenger {
     }
 
     public Passenger(PassengerTitle passengerTitle, String firstname, String lastname, PassengerType passengerType,
-                     String dob, Booking booking) {
+                     LocalDate dob, Booking booking) {
         this.passengerTitle = passengerTitle;
         this.firstname = firstname;
         this.lastname = lastname;

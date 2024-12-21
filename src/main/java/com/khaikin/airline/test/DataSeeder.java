@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,140 +52,140 @@ public class DataSeeder implements CommandLineRunner {
 
         airports.add(new Airport("Noi Bai International", "HAN", "Asia", "Ha Noi, Viet Nam",
                                  "Hanoi is the capital of Vietnam, known for its centuries-old architecture, vibrant culture, and beautiful lakes.",
-                "https://vietnamdiscovery.com/wp-content/uploads/2019/09/Hanoi-Vietnam.jpg"));
+                                 "https://vietnamdiscovery.com/wp-content/uploads/2019/09/Hanoi-Vietnam.jpg"));
         airports.add(new Airport("Tan Son Nhat International", "SGN", "Asia", "Ho Chi Minh City, Viet Nam",
                                  "Ho Chi Minh City (formerly Saigon) is the largest city in Vietnam, famous for its bustling streets, rich history, and dynamic energy.",
-                "https://lp-cms-production.imgix.net/2021-01/shutterstockRF_718619590.jpg"));
+                                 "https://lp-cms-production.imgix.net/2021-01/shutterstockRF_718619590.jpg"));
         airports.add(new Airport("Da Nang International", "DAD", "Asia", "Da Nang, Viet Nam",
                                  "Da Nang is a coastal city in central Vietnam, known for its beautiful beaches, stunning mountain views, and historical landmarks.",
-                "https://vcdn1-dulich.vnecdn.net/2022/06/03/cauvang-1654247842-9403-1654247849.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=Swd6JjpStebEzT6WARcoOA"));
+                                 "https://vcdn1-dulich.vnecdn.net/2022/06/03/cauvang-1654247842-9403-1654247849.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=Swd6JjpStebEzT6WARcoOA"));
         airports.add(new Airport("Cam Ranh International", "CXR", "Asia", "Nha Trang, Viet Nam",
                                  "Nha Trang is a popular coastal resort city, known for its stunning beaches, vibrant nightlife, and rich cultural heritage.",
-                "https://www.getvisavietnam.com/wp-content/uploads/2024/01/Nha-Trang-Khanh-Hoa-Vietnam.jpg"));
+                                 "https://www.getvisavietnam.com/wp-content/uploads/2024/01/Nha-Trang-Khanh-Hoa-Vietnam.jpg"));
         airports.add(new Airport("Phu Quoc International", "PQC", "Asia", "Phu Quoc, Viet Nam",
                                  "Phu Quoc is an idyllic island known for its beautiful beaches, clear waters, and tranquil atmosphere, making it a popular tourist destination.",
-                "https://www.pelago.com/img/destinations/phu-quoc/0725-0622_phuquoc-xlarge.jpg"));
+                                 "https://www.pelago.com/img/destinations/phu-quoc/0725-0622_phuquoc-xlarge.jpg"));
         airports.add(new Airport("Changi", "SIN", "Asia", "Singapore, Singapore",
                                  "Singapore is a global financial hub, known for its cleanliness, futuristic architecture, and rich multicultural heritage.",
-                "https://www.agoda.com/wp-content/uploads/2024/04/Featured-image-Singapore-at-night.jpg"));
+                                 "https://www.agoda.com/wp-content/uploads/2024/04/Featured-image-Singapore-at-night.jpg"));
         airports.add(new Airport("Suvarnabhumi", "BKK", "Asia", "Bangkok, Thailand",
                                  "Bangkok is Thailand’s capital, known for its vibrant street life, ornate temples, and bustling markets.",
-                "https://longphutravel.com/uploads/gallery/bangkok-pattaya-2023/thai-lan-bangkok-pattaya-bay-thang-tu-tpho-chi-minh-longphutourist-00.jpg"));
+                                 "https://longphutravel.com/uploads/gallery/bangkok-pattaya-2023/thai-lan-bangkok-pattaya-bay-thang-tu-tpho-chi-minh-longphutourist-00.jpg"));
         airports.add(new Airport("Kuala Lumpur International", "KUL", "Asia", "Kuala Lumpur, Malaysia",
                                  "Kuala Lumpur is the capital city of Malaysia, known for its modern skyline, shopping, and food culture.",
-                "https://content.r9cdn.net/rimg/dimg/1e/f2/0916f4b2-city-4723-1628829b6c4.jpg?width=1366&height=768&xhint=1334&yhint=1020&crop=true"));
+                                 "https://content.r9cdn.net/rimg/dimg/1e/f2/0916f4b2-city-4723-1628829b6c4.jpg?width=1366&height=768&xhint=1334&yhint=1020&crop=true"));
         airports.add(new Airport("Hong Kong International", "HKG", "Asia", "Hong Kong, China",
                                  "Hong Kong is a global financial center, known for its skyline, busy harbor, and as a gateway between East and West.",
-                "https://www.agoda.com/wp-content/uploads/2024/02/Featured-image-Hong-Kong-skyline-from-Kow-Loon-1244x700.jpg"));
+                                 "https://www.agoda.com/wp-content/uploads/2024/02/Featured-image-Hong-Kong-skyline-from-Kow-Loon-1244x700.jpg"));
         airports.add(new Airport("Incheon International", "ICN", "Asia", "Seoul, South Korea",
                                  "Seoul is South Korea’s capital, offering a dynamic mix of modern skyscrapers, traditional palaces, and vibrant street markets.",
-                "https://www.agoda.com/wp-content/uploads/2024/08/Namsan-Tower-during-autumn-in-Seoul-South-Korea.jpg"));
+                                 "https://www.agoda.com/wp-content/uploads/2024/08/Namsan-Tower-during-autumn-in-Seoul-South-Korea.jpg"));
         airports.add(new Airport("Narita", "NRT", "Asia", "Tokyo, Japan",
                                  "Tokyo is one of the most populous cities in the world, known for its blend of traditional culture and modern technology.",
-                "https://file3.qdnd.vn/data/images/0/2024/01/03/upload_2299/tokyo.jpg?dpi=150&quality=100&w=870"));
+                                 "https://file3.qdnd.vn/data/images/0/2024/01/03/upload_2299/tokyo.jpg?dpi=150&quality=100&w=870"));
         airports.add(new Airport("Beijing Capital International", "PEK", "Asia", "Beijing, China",
                                  "Beijing is China’s capital, rich in historical landmarks, including the Forbidden City and the Great Wall of China.",
-                "https://content.r9cdn.net/rimg/dimg/62/28/22c46ab3-city-3286-164700d5d0b.jpg?width=1366&height=768&xhint=1506&yhint=1211&crop=true"));
+                                 "https://content.r9cdn.net/rimg/dimg/62/28/22c46ab3-city-3286-164700d5d0b.jpg?width=1366&height=768&xhint=1506&yhint=1211&crop=true"));
         airports.add(new Airport("Shanghai Pudong International", "PVG", "Asia", "Shanghai, China",
                                  "Shanghai is China’s largest city, known for its futuristic skyline, historic landmarks, and being a global financial hub.",
-                "https://www.agoda.com/wp-content/uploads/2024/01/Featued-image-Shanghai-city-skyline-1244x700.jpg"));
+                                 "https://www.agoda.com/wp-content/uploads/2024/01/Featued-image-Shanghai-city-skyline-1244x700.jpg"));
         airports.add(new Airport("Dubai International", "DXB", "Asia", "Dubai, United Arab Emirates",
                                  "Dubai is a global city, known for its luxury shopping, ultramodern architecture, and thriving tourism industry.",
-                "https://www.agoda.com/wp-content/uploads/2024/04/Featured-image-Dubai-UAE.jpg"));
+                                 "https://www.agoda.com/wp-content/uploads/2024/04/Featured-image-Dubai-UAE.jpg"));
         airports.add(new Airport("Abu Dhabi International", "AUH", "Asia", "Abu Dhabi, United Arab Emirates",
                                  "Abu Dhabi is the capital of the UAE, known for its stunning modern architecture, luxury shopping, and beautiful beaches.",
-                "https://content.r9cdn.net/rimg/dimg/a8/85/bbf8aa0b-city-9457-164d6a9147e.jpg?width=1366&height=768&xhint=2731&yhint=1539&crop=true"));
+                                 "https://content.r9cdn.net/rimg/dimg/a8/85/bbf8aa0b-city-9457-164d6a9147e.jpg?width=1366&height=768&xhint=2731&yhint=1539&crop=true"));
 
         airports.add(new Airport("Heathrow", "LHR", "Europe", "London, United Kingdom",
                                  "London is the capital of the United Kingdom, known for its rich history, iconic landmarks, and cultural diversity.",
-                "https://assets.editorial.aetnd.com/uploads/2019/03/topic-london-gettyimages-760251843-feature.jpg"));
+                                 "https://assets.editorial.aetnd.com/uploads/2019/03/topic-london-gettyimages-760251843-feature.jpg"));
         airports.add(new Airport("Charles de Gaulle", "CDG", "Europe", "Paris, France",
                                  "Paris is the capital of France, known for its romantic ambiance, historic architecture, and world-famous landmarks like the Eiffel Tower.",
-                "https://cdn.britannica.com/31/255531-050-B7E07090/eiffel-tower-paris-france-champ-de-mars-view.jpg"));
+                                 "https://cdn.britannica.com/31/255531-050-B7E07090/eiffel-tower-paris-france-champ-de-mars-view.jpg"));
         airports.add(new Airport("Frankfurt", "FRA", "Europe", "Frankfurt, Germany",
                                  "Frankfurt is Germany’s financial capital, known for its modern skyline and being a key international transport hub.",
-                "https://static.independent.co.uk/2024/06/26/16/iStock-1151497055.jpg"));
+                                 "https://static.independent.co.uk/2024/06/26/16/iStock-1151497055.jpg"));
         airports.add(new Airport("Munich", "MUC", "Europe", "Munich, Germany",
                                  "Munich is famous for its beer gardens, rich cultural scene, and as the home of the annual Oktoberfest.",
-                "https://statemag.state.gov/wp-content/uploads/2020/10/1120POM-1.jpg"));
+                                 "https://statemag.state.gov/wp-content/uploads/2020/10/1120POM-1.jpg"));
         airports.add(new Airport("Rome Fiumicino", "FCO", "Europe", "Rome, Italy",
                                  "Rome is Italy's capital, filled with ancient history, including the Colosseum, Roman Forum, and the Vatican.",
-                "https://www.italyperfect.com/g/photos/upload/sml_845543004-1590582528-ip-info-rome.jpg"));
+                                 "https://www.italyperfect.com/g/photos/upload/sml_845543004-1590582528-ip-info-rome.jpg"));
         airports.add(new Airport("Madrid-Barajas", "MAD", "Europe", "Madrid, Spain",
                                  "Madrid is Spain's capital, known for its lively atmosphere, art museums, and beautiful parks.",
-                "https://www.hotelpuertamerica.com/uploads/9/8/2/4/98249186/adobestock-103181516_1_orig.jpg"));
+                                 "https://www.hotelpuertamerica.com/uploads/9/8/2/4/98249186/adobestock-103181516_1_orig.jpg"));
         airports.add(new Airport("Lisbon Humberto Delgado", "LIS", "Europe", "Lisbon, Portugal",
                                  "Lisbon is the capital of Portugal, known for its historical sites, vibrant nightlife, and beautiful coastal views.",
-                "https://wanderlustcrew.com/wp-content/uploads/2023/03/Where-to-Stay-in-Lisbon.jpeg"));
+                                 "https://wanderlustcrew.com/wp-content/uploads/2023/03/Where-to-Stay-in-Lisbon.jpeg"));
         airports.add(new Airport("Zurich", "ZRH", "Europe", "Zurich, Switzerland",
                                  "Zurich is Switzerland’s largest city, known for its stunning lakeside views, charming old town, and global financial center.",
-                "https://alpexcursion.com/storage/media/Zurich/Zurichs-Old-Town.webp"));
+                                 "https://alpexcursion.com/storage/media/Zurich/Zurichs-Old-Town.webp"));
 
         airports.add(new Airport("Los Angeles International", "LAX", "America", "Los Angeles, United States",
                                  "Los Angeles is the entertainment capital of the world, known for Hollywood, beaches, and year-round sunny weather.",
-                "https://indec.vn/wp-content/uploads/2024/07/GettyImages-1346202245-scaled.webp"));
+                                 "https://indec.vn/wp-content/uploads/2024/07/GettyImages-1346202245-scaled.webp"));
         airports.add(new Airport("John F. Kennedy International", "JFK", "America", "New York, United States",
                                  "New York City is known as 'The Big Apple', famous for its iconic skyline, diverse culture, and landmarks such as Times Square and Central Park.",
-                "https://res.cloudinary.com/shipit-cdn/images/f_auto,q_auto/v1733410609/wordpress/new-york/new-york.jpg?_i=AA"));
+                                 "https://res.cloudinary.com/shipit-cdn/images/f_auto,q_auto/v1733410609/wordpress/new-york/new-york.jpg?_i=AA"));
         airports.add(new Airport("San Francisco International", "SFO", "America", "San Francisco, United States",
                                  "San Francisco is famous for its iconic Golden Gate Bridge, vibrant arts scene, and historic neighborhoods like Chinatown.",
-                "https://content.r9cdn.net/rimg/dimg/69/1b/cca1e76b-city-13852-1633ad11236.jpg?width=1366&height=768&xhint=1966&yhint=1018&crop=true"));
+                                 "https://content.r9cdn.net/rimg/dimg/69/1b/cca1e76b-city-13852-1633ad11236.jpg?width=1366&height=768&xhint=1966&yhint=1018&crop=true"));
         airports.add(new Airport("Toronto Pearson International", "YYZ", "America", "Toronto, Canada",
                                  "Toronto is Canada’s largest city, known for its multicultural atmosphere, beautiful skyline, and world-class attractions.",
-                "https://cdn.britannica.com/35/100235-050-CE3936EE/view-CN-Tower-Toronto-skyline-observation-deck.jpg"));
+                                 "https://cdn.britannica.com/35/100235-050-CE3936EE/view-CN-Tower-Toronto-skyline-observation-deck.jpg"));
         airports.add(new Airport("Mexico City International", "MEX", "America", "Mexico City, Mexico",
                                  "Mexico City is the capital of Mexico, known for its rich cultural heritage, bustling city life, and historic landmarks.",
-                "https://a.eu.mktgcdn.com/f/100004519/pO-r3qoPr4M6KyIxlwEU9FPSlfp-Xay_MeGP0DIdWfY.jpg"));
+                                 "https://a.eu.mktgcdn.com/f/100004519/pO-r3qoPr4M6KyIxlwEU9FPSlfp-Xay_MeGP0DIdWfY.jpg"));
         airports.add(new Airport("Los Angeles Long Beach", "LGB", "America", "Long Beach, United States",
                                  "Long Beach is a coastal city in California, known for its waterfront attractions, historical landmarks, and relaxed atmosphere.",
-                "https://www.visitlongbeach.com/imager/cmsimages/meta-images/48371416/Sunset-DTLB-Skyline-for-Meta-Image_91852798b59be8b28fc00edfe4aec23a.jpg"));
+                                 "https://www.visitlongbeach.com/imager/cmsimages/meta-images/48371416/Sunset-DTLB-Skyline-for-Meta-Image_91852798b59be8b28fc00edfe4aec23a.jpg"));
         airports.add(new Airport("Miami International", "MIA", "America", "Miami, United States",
                                  "Miami is a vibrant city known for its beaches, Latin culture, and lively nightlife.",
-                "https://a.eu.mktgcdn.com/f/100004519/AGs-7NCvKQVFaEBlWyQ7SptVv7O9t-WcxGWdtu0uwM8.jpg"));
+                                 "https://a.eu.mktgcdn.com/f/100004519/AGs-7NCvKQVFaEBlWyQ7SptVv7O9t-WcxGWdtu0uwM8.jpg"));
         airports.add(new Airport("Vancouver International", "YVR", "America", "Vancouver, Canada",
                                  "Vancouver is a major port city in Canada, known for its beautiful natural scenery and vibrant arts and culture scene.",
-                "https://transcode-v2.app.engoo.com/image/fetch/f_auto,c_lfill,w_300,dpr_3/https://assets.app.engoo.com/organizations/5d2656f1-9162-461d-88c7-b2505623d8cb/images/4bHZexPUt9GiT4lPoGz5Kg.jpeg"));
+                                 "https://transcode-v2.app.engoo.com/image/fetch/f_auto,c_lfill,w_300,dpr_3/https://assets.app.engoo.com/organizations/5d2656f1-9162-461d-88c7-b2505623d8cb/images/4bHZexPUt9GiT4lPoGz5Kg.jpeg"));
         airports.add(new Airport("Los Angeles Ontario International", "ONT", "America", "Ontario, United States",
                                  "Ontario is a city in California, known for its convenient location and access to many attractions in Southern California.",
-                "https://educationontario.com/app/uploads/2022/04/Toronto-city-and-lake.jpg"));
+                                 "https://educationontario.com/app/uploads/2022/04/Toronto-city-and-lake.jpg"));
 
         airports.add(new Airport("Sydney Kingsford Smith", "SYD", "Oceania", "Sydney, Australia",
                                  "Sydney is Australia’s largest city, known for its iconic Opera House, Harbour Bridge, and vibrant coastal lifestyle.",
-                "https://cdn.britannica.com/71/188471-050-CF188A6B/Sydney-Opera-House-Port-Jackson.jpg"));
+                                 "https://cdn.britannica.com/71/188471-050-CF188A6B/Sydney-Opera-House-Port-Jackson.jpg"));
         airports.add(new Airport("Auckland International", "AKL", "Oceania", "Auckland, New Zealand",
                                  "Auckland is New Zealand’s largest city, known for its stunning harbors, beautiful parks, and vibrant cultural life.",
-                "https://upload.wikimedia.org/wikipedia/commons/c/c9/Auckland_skyline_-_May_2024_%282%29.jpg"));
+                                 "https://upload.wikimedia.org/wikipedia/commons/c/c9/Auckland_skyline_-_May_2024_%282%29.jpg"));
         airports.add(new Airport("Queenstown", "ZQN", "Oceania", "Queenstown, New Zealand",
                                  "Queenstown is New Zealand’s adventure capital, offering breathtaking landscapes and exciting outdoor activities.",
-                "https://newzealandwanderer.com/wp-content/uploads/Queenstown-New-Zealand-2.jpg"));
+                                 "https://newzealandwanderer.com/wp-content/uploads/Queenstown-New-Zealand-2.jpg"));
         airports.add(new Airport("Melbourne Tullamarine", "MEL", "Oceania", "Melbourne, Australia",
                                  "Melbourne is known for its arts and culture, sporting events, and thriving culinary scene.",
-                "https://www.agoda.com/wp-content/uploads/2024/08/melbourne-australia-featured-1244x700.jpg"));
+                                 "https://www.agoda.com/wp-content/uploads/2024/08/melbourne-australia-featured-1244x700.jpg"));
         airports.add(new Airport("Brisbane International", "BNE", "Oceania", "Brisbane, Australia",
                                  "Brisbane is a vibrant city known for its sunny weather, beautiful parks, and thriving outdoor lifestyle.",
-                "https://fareast.net.au/wp-content/uploads/2024/05/shutterstock_657755617-scaled.jpg"));
+                                 "https://fareast.net.au/wp-content/uploads/2024/05/shutterstock_657755617-scaled.jpg"));
         airports.add(new Airport("Christchurch International", "CHC", "Oceania", "Christchurch, New Zealand",
                                  "Christchurch is the largest city on New Zealand’s South Island, known for its beautiful parks and gardens.",
-                "https://www.lovoirbeauty.com/wp-content/uploads/2023/07/1-5-768x512.png"));
+                                 "https://www.lovoirbeauty.com/wp-content/uploads/2023/07/1-5-768x512.png"));
         airports.add(new Airport("Wellington International", "WLG", "Oceania", "Wellington, New Zealand",
                                  "Wellington is New Zealand’s capital, known for its lively arts scene, stunning waterfront, and unique cultural identity.",
-                "https://www.newzealand.com/assets/Tourism-NZ/Wellington/img-1536237965-7200-15477-p-E946185A-06D2-650F-15B99BC19228455E-2544003__aWxvdmVrZWxseQo_CropResizeWzE5MDAsMTAwMCw3NSwianBnIl0.jpg"));
+                                 "https://www.newzealand.com/assets/Tourism-NZ/Wellington/img-1536237965-7200-15477-p-E946185A-06D2-650F-15B99BC19228455E-2544003__aWxvdmVrZWxseQo_CropResizeWzE5MDAsMTAwMCw3NSwianBnIl0.jpg"));
 
         airports.add(new Airport("O.R. Tambo International", "JNB", "Africa", "Johannesburg, South Africa",
                                  "Johannesburg is South Africa's largest city, known for its rich history, vibrant culture, and economic importance.",
-                "https://content.r9cdn.net/rimg/dimg/31/e0/c782a711-city-26961-1644bcd0e85.jpg?crop=true&width=1020&height=498"));
+                                 "https://content.r9cdn.net/rimg/dimg/31/e0/c782a711-city-26961-1644bcd0e85.jpg?crop=true&width=1020&height=498"));
         airports.add(new Airport("Cairo International", "CAI", "Africa", "Cairo, Egypt",
                                  "Cairo is Egypt's capital, famous for its ancient monuments like the Pyramids and the Sphinx, as well as its bustling urban life.",
-                "https://res.klook.com/image/upload/c_fill,w_750,h_750/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/t5yf8wmferyhpt5zkalv.jpg"));
+                                 "https://res.klook.com/image/upload/c_fill,w_750,h_750/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/t5yf8wmferyhpt5zkalv.jpg"));
         airports.add(new Airport("Cape Town International", "CPT", "Africa", "Cape Town, South Africa",
                                  "Cape Town is one of South Africa's most beautiful cities, known for its stunning beaches, Table Mountain, and rich cultural heritage.",
-                "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/10/2e/1e/cape-town.jpg?w=1200&h=700&s=1"));
+                                 "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/10/2e/1e/cape-town.jpg?w=1200&h=700&s=1"));
         airports.add(new Airport("Murtala Muhammed International", "LOS", "Africa", "Lagos, Nigeria",
                                  "Lagos is Nigeria's largest city, known for its vibrant music scene, economic hub, and rapidly growing infrastructure.",
-                "https://149990825.v2.pressablecdn.com/wp-content/uploads/2023/09/Lagos1.jpg"));
+                                 "https://149990825.v2.pressablecdn.com/wp-content/uploads/2023/09/Lagos1.jpg"));
         airports.add(new Airport("Jomo Kenyatta International", "NBO", "Africa", "Nairobi, Kenya",
                                  "Nairobi is Kenya's capital, known for its rich wildlife, including Nairobi National Park, and its growing status as a tech hub in Africa.",
-                "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/38000/38950-Nairobi.jpg"));
+                                 "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/38000/38950-Nairobi.jpg"));
 
 
         for (Airport airport : airports) {
@@ -573,79 +574,90 @@ public class DataSeeder implements CommandLineRunner {
 
         // passenger
         List<Passenger> passengers = new ArrayList<>();
+
         passengers.add(
-                new Passenger(PassengerTitle.MR, "John", "Doe", PassengerType.ADULT, "1990-01-01", bookings.get(16)));
+                new Passenger(PassengerTitle.MR, "John", "Doe", PassengerType.ADULT, LocalDate.parse("1990-01-01"),
+                              bookings.get(16)));
         passengers.add(
-                new Passenger(PassengerTitle.MRS, "Jane", "Smith", PassengerType.ADULT, "1985-05-15",
+                new Passenger(PassengerTitle.MRS, "Jane", "Smith", PassengerType.ADULT, LocalDate.parse("1985-05-15"),
                               bookings.get(17)));
-        passengers.add(new Passenger(PassengerTitle.MS, "Emily", "Johnson", PassengerType.ADULT, "1992-09-21",
-                                     bookings.get(18)));
-        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Michael", "Brown", PassengerType.ADULT, "1978-11-30",
-                                     bookings.get(17)));
-        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Sarah", "Davis", PassengerType.ADULT, "1965-07-22",
-                                     bookings.get(0)));
-
-        passengers.add(new Passenger(PassengerTitle.BOY, "James", "Wilson", PassengerType.CHILD, "2010-03-10",
-                                     bookings.get(1)));
-        passengers.add(new Passenger(PassengerTitle.MS, "Olivia", "Martinez", PassengerType.CHILD, "2012-04-18",
-                                     bookings.get(1)));
-
-        passengers.add(new Passenger(PassengerTitle.GIRL, "Sophia", "Garcia", PassengerType.INFANT, "2021-06-05",
-                                     bookings.get(2)));
-        passengers.add(new Passenger(PassengerTitle.DOCTOR, "David", "Anderson", PassengerType.ADULT, "1980-02-14",
-                                     bookings.get(2)));
-        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Emma", "Thomas", PassengerType.ADULT, "1973-08-29",
-                                     bookings.get(3)));
+        passengers.add(
+                new Passenger(PassengerTitle.MS, "Emily", "Johnson", PassengerType.ADULT, LocalDate.parse("1992-09-21"),
+                              bookings.get(18)));
+        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Michael", "Brown", PassengerType.ADULT,
+                                     LocalDate.parse("1978-11-30"), bookings.get(17)));
+        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Sarah", "Davis", PassengerType.ADULT,
+                                     LocalDate.parse("1965-07-22"), bookings.get(0)));
 
         passengers.add(
-                new Passenger(PassengerTitle.MR, "Chris", "Lee", PassengerType.ADULT, "1991-03-03", bookings.get(4)));
-        passengers.add(new Passenger(PassengerTitle.MRS, "Anna", "Walker", PassengerType.ADULT, "1987-07-12",
-                                     bookings.get(5)));
-        passengers.add(new Passenger(PassengerTitle.MS, "Grace", "Harris", PassengerType.ADULT, "1995-08-19",
-                                     bookings.get(6)));
+                new Passenger(PassengerTitle.BOY, "James", "Wilson", PassengerType.CHILD, LocalDate.parse("2010-03-10"),
+                              bookings.get(1)));
+        passengers.add(new Passenger(PassengerTitle.MS, "Olivia", "Martinez", PassengerType.CHILD,
+                                     LocalDate.parse("2012-04-18"), bookings.get(1)));
 
-        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Lucas", "White", PassengerType.ADULT, "1979-12-25",
-                                     bookings.get(7)));
-        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Liam", "King", PassengerType.ADULT, "1968-11-11",
-                                     bookings.get(8)));
+        passengers.add(new Passenger(PassengerTitle.GIRL, "Sophia", "Garcia", PassengerType.INFANT,
+                                     LocalDate.parse("2021-06-05"), bookings.get(2)));
+        passengers.add(new Passenger(PassengerTitle.DOCTOR, "David", "Anderson", PassengerType.ADULT,
+                                     LocalDate.parse("1980-02-14"), bookings.get(2)));
+        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Emma", "Thomas", PassengerType.ADULT,
+                                     LocalDate.parse("1973-08-29"), bookings.get(3)));
 
         passengers.add(
-                new Passenger(PassengerTitle.GIRL, "Henry", "Baker", PassengerType.CHILD, "2011-02-22",
+                new Passenger(PassengerTitle.MR, "Chris", "Lee", PassengerType.ADULT, LocalDate.parse("1991-03-03"),
+                              bookings.get(4)));
+        passengers.add(
+                new Passenger(PassengerTitle.MRS, "Anna", "Walker", PassengerType.ADULT, LocalDate.parse("1987-07-12"),
+                              bookings.get(5)));
+        passengers.add(
+                new Passenger(PassengerTitle.MS, "Grace", "Harris", PassengerType.ADULT, LocalDate.parse("1995-08-19"),
                               bookings.get(6)));
-        passengers.add(new Passenger(PassengerTitle.BOY, "Charlotte", "Wright", PassengerType.CHILD, "2013-05-05",
-                                     bookings.get(8)));
-        passengers.add(
-                new Passenger(PassengerTitle.MRS, "Mia", "Green", PassengerType.INFANT, "2020-09-15", bookings.get(6)));
 
-        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Daniel", "Young", PassengerType.ADULT, "1981-04-04",
-                                     bookings.get(9)));
-        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Isabella", "Allen", PassengerType.ADULT, "1974-10-10",
-                                     bookings.get(10)));
-        passengers.add(new Passenger(PassengerTitle.MR, "Jackson", "Scott", PassengerType.ADULT, "1989-05-25",
-                                     bookings.get(11)));
+        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Lucas", "White", PassengerType.ADULT,
+                                     LocalDate.parse("1979-12-25"), bookings.get(7)));
+        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Liam", "King", PassengerType.ADULT,
+                                     LocalDate.parse("1968-11-11"), bookings.get(8)));
 
         passengers.add(
-                new Passenger(PassengerTitle.MRS, "Ava", "Hill", PassengerType.ADULT, "1986-06-14", bookings.get(8)));
-        passengers.add(new Passenger(PassengerTitle.MS, "Evelyn", "Adams", PassengerType.ADULT, "1993-09-09",
-                                     bookings.get(12)));
-        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Matthew", "Morris", PassengerType.ADULT, "1976-03-18",
-                                     bookings.get(12)));
-
-        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Harper", "Mitchell", PassengerType.ADULT, "1967-02-05",
-                                     bookings.get(13)));
-        passengers.add(new Passenger(PassengerTitle.BOY, "Landon", "Roberts", PassengerType.CHILD, "2011-06-30",
-                                     bookings.get(14)));
+                new Passenger(PassengerTitle.GIRL, "Henry", "Baker", PassengerType.CHILD, LocalDate.parse("2011-02-22"),
+                              bookings.get(6)));
+        passengers.add(new Passenger(PassengerTitle.BOY, "Charlotte", "Wright", PassengerType.CHILD,
+                                     LocalDate.parse("2013-05-05"), bookings.get(8)));
         passengers.add(
-                new Passenger(PassengerTitle.GIRL, "Ella", "Parker", PassengerType.CHILD, "2013-07-20",
+                new Passenger(PassengerTitle.MRS, "Mia", "Green", PassengerType.INFANT, LocalDate.parse("2020-09-15"),
+                              bookings.get(6)));
+
+        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Daniel", "Young", PassengerType.ADULT,
+                                     LocalDate.parse("1981-04-04"), bookings.get(9)));
+        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Isabella", "Allen", PassengerType.ADULT,
+                                     LocalDate.parse("1974-10-10"), bookings.get(10)));
+        passengers.add(
+                new Passenger(PassengerTitle.MR, "Jackson", "Scott", PassengerType.ADULT, LocalDate.parse("1989-05-25"),
+                              bookings.get(11)));
+
+        passengers.add(
+                new Passenger(PassengerTitle.MRS, "Ava", "Hill", PassengerType.ADULT, LocalDate.parse("1986-06-14"),
+                              bookings.get(8)));
+        passengers.add(
+                new Passenger(PassengerTitle.MS, "Evelyn", "Adams", PassengerType.ADULT, LocalDate.parse("1993-09-09"),
+                              bookings.get(12)));
+        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Matthew", "Morris", PassengerType.ADULT,
+                                     LocalDate.parse("1976-03-18"), bookings.get(12)));
+
+        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Harper", "Mitchell", PassengerType.ADULT,
+                                     LocalDate.parse("1967-02-05"), bookings.get(13)));
+        passengers.add(new Passenger(PassengerTitle.BOY, "Landon", "Roberts", PassengerType.CHILD,
+                                     LocalDate.parse("2011-06-30"), bookings.get(14)));
+        passengers.add(
+                new Passenger(PassengerTitle.GIRL, "Ella", "Parker", PassengerType.CHILD, LocalDate.parse("2013-07-20"),
                               bookings.get(9)));
 
-        passengers.add(new Passenger(PassengerTitle.BOY, "Abigail", "Evans", PassengerType.INFANT, "2022-01-01",
-                                     bookings.get(14)));
-        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Aiden", "Turner", PassengerType.ADULT, "1977-04-15",
-                                     bookings.get(15)));
+        passengers.add(new Passenger(PassengerTitle.BOY, "Abigail", "Evans", PassengerType.INFANT,
+                                     LocalDate.parse("2022-01-01"), bookings.get(14)));
+        passengers.add(new Passenger(PassengerTitle.DOCTOR, "Aiden", "Turner", PassengerType.ADULT,
+                                     LocalDate.parse("1977-04-15"), bookings.get(15)));
 
-        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Amelia", "Phillips", PassengerType.ADULT, "1972-12-31",
-                                     bookings.get(15)));
+        passengers.add(new Passenger(PassengerTitle.PROFESSOR, "Amelia", "Phillips", PassengerType.ADULT,
+                                     LocalDate.parse("1972-12-31"), bookings.get(15)));
 
         for (Passenger passenger : passengers) {
             passengerService.createPassenger(passenger);
