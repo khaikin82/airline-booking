@@ -56,7 +56,7 @@ public class AirplaneServiceImpl implements AirplaneService {
 
             Boolean isActive = updateAirplane.getIsActive();
             if (airplane.getIsActive() == isActive) {
-                return airplane;
+                return airplaneRepository.save(airplane);
             }
             if (!isActive) {
                 List<Flight> flights = flightRepository.findFlightsInUseByAirplaneId(id);
@@ -78,7 +78,7 @@ public class AirplaneServiceImpl implements AirplaneService {
         if (airplaneOptional.isPresent()) {
             Airplane airplane = airplaneOptional.get();
             if (airplane.getIsActive() == isActive) {
-                return airplane;
+                return airplaneRepository.save(airplane);
             }
             if (!isActive) {
                 List<Flight> flights = flightRepository.findFlightsInUseByAirplaneId(id);

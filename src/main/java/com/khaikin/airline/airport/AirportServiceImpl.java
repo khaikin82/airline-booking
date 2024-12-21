@@ -50,6 +50,8 @@ public class AirportServiceImpl implements AirportService {
             airport.setName(updateAirport.getName());
             airport.setRegion(updateAirport.getRegion());
             airport.setCity(updateAirport.getCity());
+            airport.setDescription(updateAirport.getDescription());
+            airport.setImageUrl(updateAirport.getImageUrl());
 
             Boolean isActive = updateAirport.getIsActive();
             if (airport.getIsActive() == isActive) {
