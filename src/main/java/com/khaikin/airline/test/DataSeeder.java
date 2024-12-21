@@ -45,8 +45,8 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args)
             throws Exception {
 
-        Boolean flag = true;
-        if (flag) return;
+//        Boolean flag = true;
+//        if (flag) return;
 
         // airport
         List<Airport> airports = new ArrayList<>();
