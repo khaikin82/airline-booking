@@ -31,9 +31,16 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking getBookingById(Integer id) {
-        Optional<Booking> booking = bookingRepository.findById(id);
-        if (booking.isPresent()) {
-            return booking.get();
+        Optional<Booking> bookingOptional = bookingRepository.findById(id);
+        if (bookingOptional.isPresent()) {
+            Booking booking = bookingOptional.get();
+
+            if (booking.getBookingStatus().equals(BookingStatus.PENDING) &&
+                    booking.getExpirationTime().isAfter(LocalDateTime.now())) {
+                booking.setBookingStatus(BookingStatus.CANCELLED);
+            }
+            bookingRepository.save(booking);
+            return booking;
         } else {
             throw new ResourceNotFoundException("Booking not found");
         }
@@ -57,6 +64,7 @@ public class BookingServiceImpl implements BookingService {
         }
 
         booking.setReservationTime(LocalDateTime.now());
+        booking.setExpirationTime(LocalDateTime.now().plusDays(3));
         if (!booking.getIsRoundTrip()) {
             booking.setReturnFlight(null);
         }
@@ -115,8 +123,6 @@ public class BookingServiceImpl implements BookingService {
             booking.setBookingStatus(updateBooking.getBookingStatus());
             booking.setUser(updateBooking.getUser());
 
-//            booking.setPassengers(updateBooking.getPassengers());
-
             booking.setIsRoundTrip(updateBooking.getIsRoundTrip());
 
             if (!booking.getIsRoundTrip()) {
@@ -167,7 +173,14 @@ public class BookingServiceImpl implements BookingService {
                     break;
                 }
             }
-            if (flag) return booking;
+            if (flag) {
+                if (booking.getBookingStatus().equals(BookingStatus.PENDING) &&
+                        booking.getExpirationTime().isAfter(LocalDateTime.now())) {
+                    booking.setBookingStatus(BookingStatus.CANCELLED);
+                }
+                return booking;
+            }
+
         }
         throw new ResourceNotFoundException("Booking not found");
     }

@@ -8,6 +8,7 @@ import com.khaikin.airline.auth.AuthenticationService;
 import com.khaikin.airline.auth.RegisterRequest;
 import com.khaikin.airline.booking.Booking;
 import com.khaikin.airline.booking.BookingService;
+import com.khaikin.airline.booking.BookingStatus;
 import com.khaikin.airline.flight.Flight;
 import com.khaikin.airline.flight.FlightService;
 import com.khaikin.airline.flight.FlightStatus;
@@ -44,8 +45,8 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args)
             throws Exception {
 
-//        Boolean flag = true;
-//        if (flag) return;
+        Boolean flag = true;
+        if (flag) return;
 
         // airport
         List<Airport> airports = new ArrayList<>();
@@ -567,6 +568,9 @@ public class DataSeeder implements CommandLineRunner {
                 new Booking("bob.jones@example.com", "0986789018", "First", "Economy", 5000, true, flights.get(103),
                             flights.get(104)));
 
+        bookings.get(3).setBookingStatus(BookingStatus.COMPLETED);
+        bookings.get(5).setBookingStatus(BookingStatus.CANCELLED);
+        bookings.get(12).setBookingStatus(BookingStatus.COMPLETED);
 
         for (Booking booking : bookings) {
             bookingService.createBooking(booking);

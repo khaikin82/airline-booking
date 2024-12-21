@@ -39,6 +39,7 @@ public class Booking {
     private BookingStatus bookingStatus = BookingStatus.PENDING;
 
     private LocalDateTime reservationTime;
+    private LocalDateTime expirationTime;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
