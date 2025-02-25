@@ -23,8 +23,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -669,6 +667,7 @@ public class DataSeeder implements CommandLineRunner {
 
         // user
         List<RegisterRequest> registerRequests = new ArrayList<>();
+        registerRequests.add(new RegisterRequest("admin", "super", "admin@gmail.com", "admin", Role.ADMIN));
         registerRequests.add(new RegisterRequest("Khai", "Hoang", "khaihd@gmail.com", "abc123", Role.ADMIN));
         registerRequests.add(new RegisterRequest("Anh", "Hoang", "hanguyen@gmail.com", "hangmen1", Role.ADMIN));
 //        registerRequests.add(new RegisterRequest("Linh", "Nguyen", "linhnguyen@gmail.com", "password1", Role.USER));
@@ -684,61 +683,55 @@ public class DataSeeder implements CommandLineRunner {
         // post
 
         String filePath0 =
-                "src/main/java/com/khaikin/airline/data/discount_00.jpg";
+                "uploads/discount_00.jpg";
         String filePath1 =
-                "src/main/java/com/khaikin/airline/data/discount_01.jpg";
+                "uploads/discount_01.jpg";
         String filePath2 =
-                "src/main/java/com/khaikin/airline/data/discount_02.jpg";
+                "uploads/discount_02.jpg";
         String filePath3 =
-                "src/main/java/com/khaikin/airline/data/discount_03.jpg";
-
-
-        byte[] imageData0 = Files.readAllBytes(Paths.get(filePath0));
-        byte[] imageData1 = Files.readAllBytes(Paths.get(filePath1));
-        byte[] imageData2 = Files.readAllBytes(Paths.get(filePath2));
-        byte[] imageData3 = Files.readAllBytes(Paths.get(filePath3));
+                "uploads/discount_03.jpg";
 
         List<Post> posts = List.of(new Post[]{
                 new Post("discount", "2024 Special Flight Offers",
                          "Book now to save up to 30% on select flights in 2024! Whether for business or leisure, don't miss these limited-time discounts. Secure the best deals while they last!",
-                         "discount1.jpg", "image/jpeg", imageData2),
+                         "discount1.jpg", "image/jpeg", filePath2),
 
                 new Post("discount", "Flash Sale: 24-Hour Flight Discount",
                          "Hurry! For the next 24 hours, enjoy up to 40% off on select flights. Don’t miss out on amazing savings for your next trip – book your tickets now before time runs out.",
-                         "discount2.jpg", "image/jpeg", imageData3),
+                         "discount2.jpg", "image/jpeg", filePath3),
 
                 new Post("discount", "Exclusive 2024 Airline Discounts",
                          "Take advantage of our exclusive 2024 flight discounts and save up to 25%! Book your next adventure or business trip today with unbeatable prices. Hurry, these deals won't last long!",
-                         "discount2.jpg", "image/jpeg", imageData1),
+                         "discount2.jpg", "image/jpeg", filePath1),
 
                 new Post("discount", "2024 Low-Cost Airline Sale",
                          "Don’t miss our 2024 low-cost airline sale! Save up to 30% on selected domestic and " +
                                  "international flights. Perfect for travelers looking for great deals without compromising on quality. Book now before seats fill up!",
-                         "discount3.jpg", "image/jpeg", imageData0),
+                         "discount3.jpg", "image/jpeg", filePath0),
 
                 new Post("news", "Airline Industry in 2024",
                          "The airline industry is set for a big year in 2024 with innovations in eco-friendly planes, better customer service, and smoother travel experiences. Stay tuned for how these trends will shape air travel this year.",
-                         "news1.jpg", "image/jpeg", imageData0),
+                         "news1.jpg", "image/jpeg", filePath0),
 
                 new Post("news", "New Routes in 2024",
                          "Exciting new flight routes are opening up in 2024! Airlines are expanding their networks to more destinations, giving you more options for your next trip. Check out these new routes and plan your travels.",
-                         "news2.jpg", "image/jpeg", imageData2),
+                         "news2.jpg", "image/jpeg", filePath2),
 
                 new Post("news", "Safety Innovations in 2024",
                          "Airlines are introducing cutting-edge safety tech this year, from better in-cabin air filtration to advanced monitoring systems. Learn about these innovations ensuring a safer flying experience for you.",
-                         "news3.jpg", "image/jpeg", imageData1),
+                         "news3.jpg", "image/jpeg", filePath1),
 
                 new Post("news", "Sustainable Air Travel in 2024",
                          "Airlines are embracing sustainability with fuel-efficient planes and carbon offset programs. Find out how these changes are making air travel greener and how you can help.",
-                         "news4.jpg", "image/jpeg", imageData0),
+                         "news4.jpg", "image/jpeg", filePath0),
 
                 new Post("news", "Premium Airline Services in 2024",
                          "Business and first-class passengers are enjoying even more luxurious services this year, from priority boarding to fine dining. Upgrade your next flight for a truly premium experience.",
-                         "news5.jpg", "image/jpeg", imageData3),
+                         "news5.jpg", "image/jpeg", filePath3),
 
                 new Post("news", "AI Transforming Airline Service",
                          "AI is improving the airline experience by streamlining check-ins, offering personalized services, and more. Learn how AI is making air travel smarter and more efficient for you.",
-                         "news6.jpg", "image/jpeg", imageData2)
+                         "news6.jpg", "image/jpeg", filePath2)
         });
         for (Post post : posts) {
             postService.createPost(post);

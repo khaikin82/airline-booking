@@ -3,12 +3,18 @@ package com.khaikin.airline.post;
 import com.khaikin.airline.exception.ConflictException;
 import com.khaikin.airline.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -33,11 +39,25 @@ public class PostController {
     }
 
     @GetMapping("/{id}/image")
-    public ResponseEntity<byte[]> getImageByPostId(@PathVariable int id) {
-        Post post = postService.getPostById(id);
-        byte[] imageFile = post.getImageData();
+    public ResponseEntity<Resource> getImageByPostId(@PathVariable int id) {
+        try {
+            Post post = postService.getPostById(id);
+            String imagePath = post.getImagePath();
+            Path filePath = Paths.get(imagePath);
+            Resource resource = new FileSystemResource(filePath);
 
-        return ResponseEntity.ok().contentType(MediaType.valueOf(post.getImageType())).body(imageFile);
+            // Kiểm tra xem tệp có tồn tại không
+            if (resource.exists()) {
+                String contentType = Files.probeContentType(filePath);
+                return ResponseEntity.ok()
+                        .contentType(MediaType.parseMediaType(contentType != null ? contentType : "image/jpeg"))
+                        .body(resource);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PostMapping

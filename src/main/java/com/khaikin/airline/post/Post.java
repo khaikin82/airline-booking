@@ -3,7 +3,6 @@ package com.khaikin.airline.post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,18 +24,16 @@ public class Post {
 
     private String imageName;
     private String imageType;
-
-    @Lob
-    private byte[] imageData;
+    private String imagePath; // Đường dẫn tới ảnh lưu trong thư mục
 
     private LocalDateTime postedTime;
 
-    public Post(String type, String title, String content, String imageName, String imageType, byte[] imageData) {
+    public Post(String type, String title, String content, String imageName, String imageType, String imagePath) {
         this.type = type;
         this.title = title;
         this.content = content;
         this.imageName = imageName;
         this.imageType = imageType;
-        this.imageData = imageData;
+        this.imagePath = imagePath;
     }
 }

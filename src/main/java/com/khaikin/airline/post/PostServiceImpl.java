@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +17,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
+
+    private final String uploadDir = "uploads/";
 
     @Override
     public List<Post> getAllPosts() {
@@ -44,9 +49,16 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post createPost(Post post, MultipartFile imageFile)
             throws IOException {
-        post.setImageName(imageFile.getOriginalFilename());
-        post.setImageType(imageFile.getContentType());
-        post.setImageData(imageFile.getBytes());
+        String imageName = System.currentTimeMillis() + "_" + imageFile.getOriginalFilename();
+        String imageType = imageFile.getContentType();
+
+        Path path = Paths.get(uploadDir + imageName);
+        Files.createDirectories(path.getParent());  // Tạo thư mục nếu chưa tồn tại
+        imageFile.transferTo(path.toFile());
+
+        post.setImageName(imageName);
+        post.setImageType(imageType);
+        post.setImagePath(path.toString());
         post.setPostedTime(LocalDateTime.now());
         return postRepository.save(post);
     }
@@ -61,9 +73,16 @@ public class PostServiceImpl implements PostService {
             post.setTitle(updatePost.getTitle());
             post.setContent(updatePost.getContent());
 
-            post.setImageName(updateImageFile.getOriginalFilename());
-            post.setImageType(updateImageFile.getContentType());
-            post.setImageData(updateImageFile.getBytes());
+            String imageName = System.currentTimeMillis() + "_" + updateImageFile.getOriginalFilename();
+            String imageType = updateImageFile.getContentType();
+            Path path = Paths.get(Paths.get(uploadDir).toAbsolutePath() + "/" + imageName);
+            Files.createDirectories(path.getParent());  // Tạo thư mục nếu chưa tồn tại
+            updateImageFile.transferTo(path.toFile());
+
+            post.setImageName(imageName);
+            post.setImageType(imageType);
+            post.setImagePath(path.toString());
+
             return postRepository.save(post);
         } else {
             throw new ResourceNotFoundException("Post not found!");
